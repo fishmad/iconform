@@ -1,23 +1,22 @@
-@extends('layout.app')
 
+
+@extends('_layouts.master')
 @section('content')
-    <h1>Contact</h1>
-    {!! Form::open(['url' => 'contact/submit']) !!}
-        <div class="form-group">
-            {!! Form::label('name', 'Name') !!}
-            {!! Form::text('name', '', ['class' => 'form-control', 'placeholder' => 'Enter name']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('email', 'E-Mail Address') !!}
-            {!! Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Enter email']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('message', 'Message') !!}
-            {!! Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Enter message']) !!}
-        </div>
-        <div>
-            {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-        </div>
-    {!! Form::close() !!}
 
+      <div class="container-fluid">
+        <div class="animate fadeIn">
+          <div class="card">
+            <div class="card-header">Contact</div>
+            <div class="card-body">Contact us page
+
+              @if (session('status'))
+              <div class="alert alert-success">
+                {{ session('status') }}
+              </div>
+              @endif
+
+            </div><!-- ./card-body-->
+          </div><!-- ./card-->
+        </div><!-- ./animate fadeIn-->
+      </div><!-- ./container-fluid-->
 @endsection
