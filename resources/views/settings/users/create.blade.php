@@ -61,7 +61,7 @@
                 <hr />
 
                 <div class="form-group row {{ $errors->has('role') ? 'has-error' : ''}}">
-                  {!! Form::label('role', 'Give role to user', ['class' => 'col-md-3 col-form-label']) !!}
+                  {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-form-label']) !!}
                   <div class="col-md-9">
                     @foreach ($roles as $role) 
                       <div class="checkbox">

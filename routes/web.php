@@ -6,22 +6,18 @@ Route::view('about', 'about')->name('about');
 Route::view('contact', 'contact')->name('contact');
 
 Auth::routes();
-
 Route::get('admin', 'Admin\AdminController@index');
+Route::get('settings/samples/datatables', 'Settings\\SamplesController@datatables')->name('settings.samples.datatables');
 
-Route::resource('settings/users', 'Settings\UserController');
-Route::resource('settings/roles', 'Settings\RoleController');
-Route::resource('settings/permissions', 'Settings\PermissionController');
+Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function () {
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
+    Route::resource('samples', 'SamplesController');
+});
 
 Route::get('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator']);
 Route::post('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator']);
-
-Route::get('settings/samples/datatables', 'Settings\\SamplesController@datatables')->name('settings.samples.datatables');
-Route::resource('settings/samples', 'Settings\\SamplesController');
-
-// Route::get('settings/samples', 'Admin\\SamplesController@index');
-// Route::get('settings/samples/{id}', 'Admin\\SamplesController@show');
-// Route::get('settings/samples/{sample}', 'Admin\\SamplesController@show');
 
 /* CoreUI templates */
 Route::middleware('auth')->group(function() {

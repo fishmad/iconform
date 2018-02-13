@@ -17,8 +17,8 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
                     <th>Label</th>
+                    <th>Code</th>
                     <th>Item Order</th>
                     <th>Groupings</th>
                     <th>Grouping Order</th>
@@ -29,8 +29,8 @@
                 @foreach($permissions as $item)
                 <tr>
                   <td>{{ $loop->iteration or $item->id }}</td>
-                  <td>{{ $item->name }}</td>
                   <td>{{ $item->label }}</td>
+                  <td>{{ $item->name }}</td>
                   <th>{{ $item->item_order }}</th>
                   <th>{{ $item->groupings }}</th>
                   <th>{{ $item->groupings_order }}</th>

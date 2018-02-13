@@ -1,48 +1,43 @@
-@extends('admin.layouts.master')
-
+@extends('_layouts.master')
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.partials.sidebar')
 
-            <div class="col-md-9">
-                <div class="panel panel-default">
+      <div class="container-fluid">
+        <div class="animate fadeIn">
 
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6">
-                              Edit Role: {{ $role->name }}
-                            </div>
-                            <div class="col-md-6 btn-toolbar">
-                                <a href="{{ url('/admin/permissions') }}" class="btn btn-xs btn-default pull-right" title="Back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-                            </div>
-                        </div>
-                    </div>
+          <div class="row justify-content-md-center">
+            <div class="col-md-10">
 
-                    <div class="panel-body">
+              <div class="card">
+                <div class="card-header">Edit Role: {{ $role->name }}</div>
 
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
+                <div class="card-body">
 
-                        {!! Form::model($role, [
-                            'method' => 'PATCH',
-                            'url' => ['/admin/roles', $role->id],
-                            'class' => 'form-horizontal',
-                            'files' => true
-                        ]) !!}
+                    {{--  <a href="{{ url('/settings/permissions') }}" class="btn btn-secondary" title="Back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>  --}}
 
-                        @include ('admin.roles.form', ['submitButtonText' => 'Update'])
+                  @if ($errors->any())
+                  <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                  @endif
 
-                        {!! Form::close() !!}
+                  {!! Form::model($role, [
+                    'method' => 'PATCH',
+                    'url' => ['/settings/roles', $role->id],
+                    'class' => 'form-horizontal',
+                    'files' => true
+                  ]) !!}
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                  @include ('settings.roles.form', ['submitButtonText' => 'Update'])
+
+                  {!! Form::close() !!}
+                </div><!-- ./card-body-->
+              </div><!-- ./card-->
+
+            </div><!-- ./col-md-11-->.
+            </div><!-- ./row justify-content-md-center -->
+
+        </div><!-- ./animate fadeIn-->
+      </div><!-- ./container-fluid-->
 @endsection

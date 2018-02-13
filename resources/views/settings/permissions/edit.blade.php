@@ -31,3 +31,10 @@
         </div><!-- /.animate.fadeIn -->
       </div><!-- /.container-fluid -->
 @endsection
+@push('scripts')
+<script type="text/javascript">
+  $('#label').keyup(function() {
+    $('#name').val($(this).val().toLowerCase().replace(/[^a-z]/g, '_'));
+})
+</script>
+@endpush

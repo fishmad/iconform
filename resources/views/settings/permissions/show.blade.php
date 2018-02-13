@@ -26,7 +26,7 @@
                   ))!!}
                     {!! Form::close() !!}
                 </div>
-              <table class="table table-borderless">
+              <table class="table table-responsive-sm table-s">
                 <tbody>
                   <tr>
                     <th>ID</th>

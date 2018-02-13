@@ -27,7 +27,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     {{--  <th>Date/Time Added</th>  --}}
-                    <th>User Roles</th>
+                    <th>Roles</th>
                     <th class="text-right">Actions</th>
                   </tr>
                 </thead>

@@ -47,7 +47,7 @@
                 <hr />
 
                   <div class="form-group row {{ $errors->has('role') ? 'has-error' : ''}}">
-                      {!! Form::label('role', 'Has roles', ['class' => 'col-md-3 col-form-label']) !!}
+                      {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-form-label']) !!}
                       <div class="col-md-9">
                         @if(!$roles->isEmpty())
                             @foreach ($roles as $role) 
