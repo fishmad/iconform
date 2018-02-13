@@ -22,6 +22,9 @@ Breadcrumbs::register('contact', function ($breadcrumbs) {
   $breadcrumbs->push('Contact us', route('contact'));
 });
 
+
+
+
 // Home > Blog
 Breadcrumbs::register('blog', function ($breadcrumbs) {
     $breadcrumbs->parent('home');
