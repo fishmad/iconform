@@ -44,7 +44,6 @@
 $(function() {
   $('#daya-tabla').DataTable({
     processing: true,
-    serverSide: true,
     responsive: true,
     colReorder: true,
     ajax: '{!! route('settings.samples.datatables') !!}',
