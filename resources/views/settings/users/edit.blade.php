@@ -11,7 +11,7 @@
                           
               {{ Form::model($user, [
                 'method' => 'PUT',
-                'route' => ['users.update', $user->id], 
+                'route' => ['settings.users.update', $user->id], 
                 'class' => 'form-horizontal',
                 'files' => true
               ]) }}

@@ -31,11 +31,4 @@ Groupings							Samples
 Permission Action			browse|read|edit|add|delete|all
 Permission Label			Browse
 Permission Name				samples_browse
-
-
-
-
-
-
-
 */
