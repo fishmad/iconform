@@ -8,7 +8,7 @@
               User Administration
             </div>
             <div class="card-body">
-              <a href="{{ url('/admin/permissions/create') }}" class="btn btn-success btn-sm" title="Add New Sample">
+              <a href="{{ url('/settings/permissions/create') }}" class="btn btn-success btn-sm" title="Add New Sample">
                   <i class="fa fa-plus" aria-hidden="true"></i> Add New
               </a>
               <br/>

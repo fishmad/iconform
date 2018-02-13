@@ -21,10 +21,8 @@ class SamplesController extends Controller
     public function index(Request $request)
     {
 
-      // $this->authorize('sample_browse', $request);
         if (! Gate::allows('sample_browse')) {
-            //return abort(401);
-            return redirect()->guest('login');
+            return abort(401);
         }
 
         $dbFields = DB::getSchemaBuilder()->getColumnListing('samples');
