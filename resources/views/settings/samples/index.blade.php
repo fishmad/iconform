@@ -18,7 +18,7 @@
               <br/>
               <br/>  --}}
 
-              <table id="daya-tabla" class="table table-responsive-sm table-sm" cellspacing="0" width="100%">
+              <table id="datatable" class="table table-responsive-sm table-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
 @foreach ($dbFields as $dbField => $name)
@@ -42,10 +42,13 @@
 @push('scripts')
 <script>
 $(function() {
-  $('#daya-tabla').DataTable({
+  $.fn.DataTable.ext.pager.numbers_length = 5;
+  $('#datatable').DataTable({
     processing: true,
+    {{--  serverSide: true,  --}}
     responsive: true,
     colReorder: true,
+    pagingType: "simple_numbers",
     ajax: '{!! route('settings.samples.datatables') !!}',
     columns: [
 @foreach ($dbFields as $dbField => $name)
@@ -90,29 +93,29 @@ $(function() {
 </script>
 
 <script>
-$('#daya-tabla').on('click', '.btn-delete[data-remote]', function (e) { 
-    e.preventDefault();
-     $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+$('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
+  e.preventDefault();
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  var url = $(this).data('remote');
+  // confirm then
+  if (confirm('Are you sure you want to delete this?')) {
+    $.ajax({
+      url: url,
+      type: 'DELETE',
+      dataType: 'json',
+      data: {method: '_DELETE', submit: true}
+    }).always(function (data) {
+      $('#datatable').DataTable().draw(false);
     });
-    var url = $(this).data('remote');
-    // confirm then
-    if (confirm('Are you sure you want to delete this?')) {
-        $.ajax({
-            url: url,
-            type: 'DELETE',
-            dataType: 'json',
-            data: {method: '_DELETE', submit: true}
-        }).always(function (data) {
-            $('#daya-tabla').DataTable().draw(false);
-        });
-    }else
-        alert("You have cancelled!");
+  } else
+    alert("You have cancelled!");
 });
 </script>
-
+<script src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.js"></script>

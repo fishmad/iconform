@@ -3,11 +3,6 @@
 @extends('_layouts.master')
 @section('content')
 
-
-@foreach (Breadcrumbs::generate('home') as $breadcrumb)
-    {{-- ... --}}
-@endforeach
-
       <div class="container-fluid">
         <div class="animate fadeIn">
           <div class="card">
