@@ -1,9 +1,9 @@
-@php
+{{--  @php
 $breadcrumbs = Breadcrumbs::generate()
-@endphp
+@endphp  --}}
 
 <!-- Breadcrumbs -->
-    <ol class="breadcrumb">
+    <ol class="breadcrumb non-stock">
 @if(count($breadcrumbs))
   @foreach ($breadcrumbs as $breadcrumb)
     @if ($breadcrumb->url && !$loop->last)

@@ -3,12 +3,8 @@
     {
       "section": "External Pages",
       "icon": "<i class=\"icon-docs\"><\/i>",
+      "flag": "top-level",
       "items": [
-        {
-          "name": "Home",
-          "link": "/home",
-          "icon": "<i class=\"icon-home\"><\/i>"
-        },
         {
           "name": "About",
           "link": "/about",
@@ -24,6 +20,7 @@
     {
       "section": "Users & Roles",
       "icon": "<i class=\"icon-people\"><\/i>",
+      "flag": "dropdown",
       "items": [
         {
           "name": "Users",
@@ -57,6 +54,7 @@
     {
       "section": "Tools",
       "icon": "<i class=\"icon-settings\"><\/i>",
+      "flag": "dropdown",
       "items": [
         {
           "name": "CRUD Generator",
@@ -68,6 +66,7 @@
     {
       "section": "Modules",
       "icon": "<i class=\"icon-puzzle\"><\/i>",
+      "flag": "dropdown",
       "items": [
         {
           "name": "Sample",

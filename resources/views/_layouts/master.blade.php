@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  
   @stack('head_scripts')
+<!--<link rel="stylesheet" href="https://gurayyarar.github.io/AdminBSBMaterialDesign/css/style.css">-->
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -21,8 +22,7 @@
     @include('_partials.coreui.sidebar')
 
     <main class="main">
-      @include('_partials.coreui.breadcrumbs')
-
+{{ Breadcrumbs::render() }}
         @if (Session::has('flash_message'))
         <div class="container-fluid">
           <div class="alert  alert-success alert-dismissible fade show" role="alert">

@@ -18,8 +18,8 @@ return [
     |
     */
 
-    'view' => 'breadcrumbs::bootstrap4',
-    // 'view' => '_partials/breadcrumbs',
+    //'view' => 'breadcrumbs::bootstrap4',
+     'view' => '_partials/coreui/breadcrumbs',
 
     /*
     |--------------------------------------------------------------------------
