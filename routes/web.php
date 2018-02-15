@@ -5,6 +5,9 @@ Route::get('home', 'HomeController@index')->name('home');
 
 Route::view('about', 'about')->name('about');
 Route::view('contact', 'contact')->name('contact');
+
+Route::view('faq', 'faq.faq')->name('faq.faq');
+
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::get('admin', 'Admin\AdminController@index')->name('admin'); // Non existing view - redirects to dashboard
 
@@ -12,6 +15,8 @@ Auth::routes();
 
 Route::get('settings/samples/datatables', 'Settings\\SamplesController@datatables')->name('settings.samples.datatables');
 
+/* Settings Sub-dir */
+Route::view('settings', 'settings.index')->name('settings.index'); // Required
 Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function () {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
@@ -19,8 +24,9 @@ Route::namespace('Settings')->prefix('settings')->name('settings.')->group(funct
     Route::resource('samples', 'SamplesController');
 });
 
-Route::get('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator']);
-Route::post('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator']);
+
+Route::get('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator'])->name('getCrud');
+Route::post('tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator'])->name('postCrud');
 
 /* CoreUI templates */
 Route::middleware('auth')->group(function() {

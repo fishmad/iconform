@@ -6,13 +6,10 @@
               <span class="help-block">Lowercase is better</span>
             </div>
           </div>
-
           <hr>
-          
           <div class="form-group row {{ $errors->has('title') ? 'has-error' : ''}}">
             {!! Form::label('role', 'Role has these permissions', ['class' => 'col-md-3 col-form-label']) !!}
             <div class="col-md-9">
-   
               <div class="row">
               @foreach ($permissions as $groupings => $permissions)
               <div class="col-sm">
@@ -30,9 +27,8 @@
               </div><!-- /.row -->
             </div><!-- /.col-md-9 -->
           </div><!-- /.form-group row -->
-
           <div class="form-group row">
             <div class="offset-md-3 col-md-4">
               {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}
             </div>
-          </div>
+        </div>

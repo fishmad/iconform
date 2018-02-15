@@ -71,7 +71,8 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('settings.roles.create', ['permissions'=>$permissions]);
+        // return view('settings.roles.create', ['permissions'=>$permissions]);
+        return view('settings.roles.create', compact('permissions'));
     }
 
 	

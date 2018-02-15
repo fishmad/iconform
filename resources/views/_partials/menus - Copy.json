@@ -25,7 +25,19 @@
         {
           "name": "Users",
           "link": "\/settings\/users",
-          "icon": "<i class=\"icon-people\"><\/i>"
+          "icon": "<i class=\"icon-user\"><\/i>",
+          "submenu": [
+            {
+              "name": "List All Users",
+              "link": "\/settings\/users",
+              "icon": "<i class=\"icon-people\"><\/i>"
+            },
+            {
+              "name": "Add New User",
+              "link": "\/settings\/users\/create",
+              "icon": "<i class=\"icon-user-follow\"><\/i>"
+            }
+          ]
         },
         {
           "name": "Roles",
