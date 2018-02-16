@@ -6,10 +6,16 @@
 
 @section('content')
 
-      <div class="container-fluid">
+      <div class="container">
         <div class="animate fadeIn">
           <div class="card">
-            <div class="card-header">Samples Register</div>
+            <div class="card-header">
+							<h2>Samples Register 
+								<small>
+									Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
+								</small>
+							</h2>
+						</div>
             <div class="card-body">
 
               {{--  <a href="{{ url('/settings/samples/create') }}" class="btn btn-success btn-sm" title="Add New Sample">

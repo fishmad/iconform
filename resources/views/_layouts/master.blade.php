@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  
   @stack('head_scripts')
-<!--<link rel="stylesheet" href="https://gurayyarar.github.io/AdminBSBMaterialDesign/css/style.css">-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">

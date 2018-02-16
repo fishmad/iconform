@@ -1,28 +1,32 @@
 @extends('_layouts.master')
 
 @section('content')
-      <div class="container-fluid">
+      <div class="container">
         <div class="animate fadeIn">
           <div class="card">
             <div class="card-header">
-              CRUD Generator
-            </div>
+							<h2>CRUD Generator
+								<small>
+									Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
+								</small>
+							</h2>
+						</div>
             <div class="card-body">
 
               <form class="form-horizontal" method="post" action="{{ url('/tools/crud') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group row">
-                  <label for="crud_name" class="col-md-3 col-form-label">Crud Name:</label>
-                  <div class="col-md-9">
+                  <label for="crud_name" class="col-md-3 col-xl-2 col-form-label">Crud Name:</label>
+                  <div class="col">
                     <input type="text" name="crud_name" class="form-control" id="crud_name" placeholder="Posts" required="true">
                   </div>
                 </div>
 
 
                 {{--  <div class="form-group row">
-                  {!! Form::label('name', 'Name', ['class' => 'col-md-3 col-form-label']) !!}
-                  <div class="col-md-9">
+                  {!! Form::label('name', 'Name', ['class' => 'col-md-3 col-xl-2 col-form-label']) !!}
+                  <div class="col">
                     {!! Form::text('name', null, ['class' => 'form-control', 'required' => '']) !!}
                     <div class="invalid-feedback">You must enter a name.</div>
                       @if ($errors->any())
@@ -33,26 +37,26 @@
 
 
                 <div class="form-group row">
-                  <label for="controller_namespace" class="col-md-3 col-form-label">Controller Namespace:</label>
-                  <div class="col-md-9">
+                  <label for="controller_namespace" class="col-md-3 col-xl-2 col-form-label">Controller Namespace:</label>
+                  <div class="col">
                     <input type="text" name="controller_namespace" class="form-control" id="controller_namespace" placeholder="Admin">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="route_group" class="col-md-3 col-form-label">Route Group Prefix:</label>
-                  <div class="col-md-9">
+                  <label for="route_group" class="col-md-3 col-xl-2 col-form-label">Route Group Prefix:</label>
+                  <div class="col">
                     <input type="text" name="route_group" class="form-control" id="route_group" placeholder="admin">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="view_path" class="col-md-3 col-form-label">View Path:</label>
-                  <div class="col-md-9">
+                  <label for="view_path" class="col-md-3 col-xl-2 col-form-label">View Path:</label>
+                  <div class="col">
                     <input type="text" name="view_path" class="form-control" id="view_path" placeholder="admin">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="route" class="col-md-3 col-form-label">Want to add route?</label>
-                  <div class="col-md-9">
+                  <label for="route" class="col-md-3 col-xl-2 col-form-label">Want to add route?</label>
+                  <div class="col">
                     <select name="route" class="form-control" id="route">
                       <option value="yes">Yes</option>
                       <option value="no">No</option>
@@ -60,21 +64,21 @@
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="relationships" class="col-md-3 col-form-label">Relationships</label>
-                  <div class="col-md-9">
+                  <label for="relationships" class="col-md-3 col-xl-2 col-form-label">Relationships</label>
+                  <div class="col">
                     <input type="text" name="relationships" class="form-control" id="relationships" placeholder="comments#hasMany#App\Comment">
                     <p class="help-block">method#relationType#Model</p>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="form_helper" class="col-md-3 col-form-label">Form Helper</label>
-                  <div class="col-md-9">
+                  <label for="form_helper" class="col-md-3 col-xl-2 col-form-label">Form Helper</label>
+                  <div class="col">
                     <input type="text" name="form_helper" class="form-control" id="form_helper" placeholder="laravelcollective" value="laravelcollective">
                   </div>
                 </div>
                 <div class="form-group row">
-                  <label for="soft_deletes" class="col-md-3 col-form-label">Want to use soft deletes?</label>
-                  <div class="col-md-9">
+                  <label for="soft_deletes" class="col-md-3 col-xl-2 col-form-label">Want to use soft deletes?</label>
+                  <div class="col">
                     <select name="soft_deletes" class="form-control" id="soft_deletes">
                       <option value="no">No</option>
                       <option value="yes">Yes</option>
@@ -84,9 +88,11 @@
 
                 <hr>
 
-                <div class="form-group table-fields">
-                  <h4 class="text-center">Table Fields:</h4><br>
-                  <div class="entry col-md-10 col-md-offset-2 form-inline">
+                <div class="form-group row table-fields">
+                  <label for="soft_deletes" class="col-md-3 col-xl-2 col-form-label">Table Fields:</label>
+									
+                   <!-- /.entry - Repeats -->
+									 <div class="entry col-md-9 col-xl-10 form-inline">
                     <input class="form-control" name="fields[]" type="text" placeholder="field_name" required="true">
                     <select name="fields_type[]" class="form-control">
                       <option value="string">string</option>
@@ -127,8 +133,11 @@
                     </button>
 
                   </div>
+									<!-- /.entry - Repeats -->
+									
                 </div>
                 <p class="help text-center">It will automatically assume form fields based on the migration field type.</p>
+
                 <br>
                 <div class="form-group row">
                   <div class="col-md-offset-4 col-md-4">
