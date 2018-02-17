@@ -26,7 +26,7 @@ class PermissionController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('settings.permissions.index')->with('permissions', $permissions);
+        return view('app.settings.permissions.index')->with('permissions', $permissions);
     }
 		
 		
@@ -44,7 +44,7 @@ class PermissionController extends Controller
 
 			$permission = Permission::findOrFail($id);
 			
-      return view('settings.permissions.show', compact('permission'));
+      return view('app.settings.permissions.show', compact('permission'));
 			
     }
 		
@@ -61,7 +61,7 @@ class PermissionController extends Controller
         $permission = Permission::find($id);
         $roles = Role::get();
         
-        return view('settings.permissions.edit', compact('permission'))->with('roles', $roles);
+        return view('app.settings.permissions.edit', compact('permission'))->with('roles', $roles);
     }
 		
 		
@@ -75,7 +75,7 @@ class PermissionController extends Controller
     {
         $roles = Role::get();
 
-        return view('settings.permissions.create')->with('roles', $roles);
+        return view('app.settings.permissions.create')->with('roles', $roles);
     }
 
 		

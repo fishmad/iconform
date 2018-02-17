@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Settings;
+namespace App\Http\Controllers\Registers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 
 class SamplesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +37,7 @@ class SamplesController extends Controller
 
         $dbFields = DB::getSchemaBuilder()->getColumnListing('samples');
 
-        return view('app.settings.samples.index', compact('dbFields'));
+        return view('app.registers.samples.index', compact('dbFields'));
     }
 
 
@@ -38,20 +48,20 @@ class SamplesController extends Controller
     return Datatables::of($samples)
 
     // ->addColumn('action', function ($sample) {
-    //     $btns    = '<a href="' . route('app.settings.samples.show', $sample->id) . '" title="View" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-search-plus"></i></a> ';
-    //     $btns   .= '<a href="' . route('app.settings.samples.edit', $sample->id) . '" title="Edit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i></a> ';
-    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="/app/settings/samples/' . $sample->id . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
-    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="' . route('app.settings.samples.destroy', $sample->id) . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
+    //     $btns    = '<a href="' . route('app.registers.samples.show', $sample->id) . '" title="View" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-search-plus"></i></a> ';
+    //     $btns   .= '<a href="' . route('app.registers.samples.edit', $sample->id) . '" title="Edit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i></a> ';
+    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="/registers/samples/' . $sample->id . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
+    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="' . route('app.registers.samples.destroy', $sample->id) . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
     //   return $btns;
     // })
 
     ->editColumn('title', function($samples) {
-      $url = route('app.settings.samples.show', $samples->id);
+      $url = route('app.registers.samples.show', $samples->id);
       return '<a href="' . $url . '">' . $samples->title . '</a>';
     })
     ->rawColumns(['title', 'action'])
     ->addColumn('action', function ($samples) {
-      return view('app.settings.samples.datatables.action', compact('samples'))->render();
+      return view('app.registers.samples.datatables.action', compact('samples'))->render();
     })
     ->make(true);
   }
@@ -72,7 +82,7 @@ class SamplesController extends Controller
 
       $sample = Sample::findOrFail($id);
 
-      return view('app.settings.samples.show', compact('sample'));
+      return view('app.registers.samples.show', compact('sample'));
     }
 
 
@@ -92,7 +102,7 @@ class SamplesController extends Controller
 
         $sample = Sample::findOrFail($id);
 
-        return view('app.settings.samples.edit', compact('sample'));
+        return view('app.registers.samples.edit', compact('sample'));
     }
 
 
@@ -108,7 +118,7 @@ class SamplesController extends Controller
           return abort(401);
         }
 
-        return view('app.settings.samples.create');
+        return view('app.registers.samples.create');
     }
 
 
@@ -128,7 +138,7 @@ class SamplesController extends Controller
 
         Sample::destroy($id);
 
-        return redirect('settings/samples')->with('flash_message', 'Sample deleted!');
+        return redirect('app/registers/samples')->with('flash_message', 'Sample deleted!');
     }
 
 
@@ -154,7 +164,7 @@ class SamplesController extends Controller
         
         Sample::create($requestData);
 
-        return redirect('settings/samples')->with('flash_message', 'Sample added!');
+        return redirect('app/registers/samples')->with('flash_message', 'Sample added!');
     }
 
 
@@ -182,7 +192,7 @@ class SamplesController extends Controller
         $sample = Sample::findOrFail($id);
         $sample->update($requestData);
 
-        return redirect('settings/samples')->with('flash_message', 'Sample updated!');
+        return redirect('app/registers/samples')->with('flash_message', 'Sample updated!');
     }
 
 

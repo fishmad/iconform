@@ -24,17 +24,17 @@
       "items": [
         {
           "name": "Users",
-          "link": "\/settings\/users",
+          "link": "\/app\/settings\/users",
           "icon": "<i class=\"icon-people\"><\/i>"
         },
         {
           "name": "Roles",
-          "link": "\/settings\/roles",
+          "link": "\/app\/settings\/roles",
           "icon": "<i class=\"icon-key\"><\/i>"
         },
         {
           "name": "Permissions",
-          "link": "\/settings\/permissions",
+          "link": "\/app\/settings\/permissions",
           "icon": "<i class=\"icon-lock-open\"><\/i>"
         }
       ]
@@ -46,8 +46,20 @@
       "items": [
         {
           "name": "CRUD Generator",
-          "link": "\/tools\/crud",
+          "link": "\/app\/tools\/crud",
           "icon": "<i class=\"icon-grid\"><\/i>"
+        }
+      ]
+    },
+    {
+      "section": "Registers",
+      "icon": "<i class=\"icon-puzzle\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "Samples Register",
+          "link": "\/app\/registers\/samples",
+          "icon": "<i class=\"icon-puzzle\"><\/i>"
         }
       ]
     },
@@ -57,7 +69,7 @@
       "flag": "dropdown",
       "items": [
         {
-          "name": "Sample",
+          "name": "Empty",
           "link": "\/settings\/samples",
           "icon": "<i class=\"icon-puzzle\"><\/i>"
         }

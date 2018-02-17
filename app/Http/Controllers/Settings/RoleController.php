@@ -27,7 +27,7 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('settings.roles.index')->with('roles', $roles);
+        return view('app.settings.roles.index')->with('roles', $roles);
     }
 
 	
@@ -42,7 +42,7 @@ class RoleController extends Controller
 		// return redirect('roles');
 		$role = Role::findOrFail($id);
 			
-		return view('settings.roles.show', compact('role'));
+		return view('app.settings.roles.show', compact('role'));
     }
 	
 
@@ -59,7 +59,7 @@ class RoleController extends Controller
         $permissions = Permission::orderBy('groupings_order', 'asc')->orderBy('item_order', 'asc')->get()->groupBy('groupings');
 
         //dd($permissions);
-        return view('settings.roles.edit', compact('role', 'permissions'));
+        return view('app.settings.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -71,8 +71,8 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        // return view('settings.roles.create', ['permissions'=>$permissions]);
-        return view('settings.roles.create', compact('permissions'));
+        // return view('app.settings.roles.create', ['permissions'=>$permissions]);
+        return view('app.settings.roles.create', compact('permissions'));
     }
 
 	

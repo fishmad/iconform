@@ -27,7 +27,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('settings.users.index')->with('users', $users);
+        return view('app.settings.users.index')->with('users', $users);
 
         // $user = User::findOrFail($id);
         // $roles = Role::get();
@@ -50,7 +50,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 			
-        return view('settings.users.show', compact('user'));
+        return view('app.settings.users.show', compact('user'));
 
     }
 
@@ -67,7 +67,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('settings.users.edit', compact('user', 'roles'));
+        return view('app.settings.users.edit', compact('user', 'roles'));
     }
 
 
@@ -80,7 +80,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('settings.users.create', ['roles'=>$roles]);
+        return view('app.settings.users.create', ['roles'=>$roles]);
     }
 
 
@@ -96,7 +96,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect('settings/users')->with('flash_message','User successfully deleted.');
+        return redirect('app/settings/users')->with('flash_message','User successfully deleted.');
     }
 
 
@@ -129,7 +129,7 @@ class UserController extends Controller
             }
         }        
 
-        return redirect('settings/users')->with('flash_message','User successfully added.');
+        return redirect('app/settings/users')->with('flash_message','User successfully added.');
     }
 
 
@@ -166,7 +166,7 @@ class UserController extends Controller
             $user->roles()->detach(); // Remove any unticked roles[o] references in table: role_has_permissions 
         }
 
-        return redirect('settings/users')->with('flash_message', 'User successfully edited.');
+        return redirect('app/settings/users')->with('flash_message', 'User successfully edited.');
 
 
 
