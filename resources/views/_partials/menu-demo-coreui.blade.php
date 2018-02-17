@@ -1,4 +1,4 @@
-          <!-- demo-corui-menu-items -->
+          <!-- static demo corui menu -->
           <li class="nav-title">
             UI Elements
           </li>
@@ -61,5 +61,4 @@
                 </ul>
               </li>
             </ul>
-          </li>
-          <!-- /.demo-corui-menu-items -->
+          </li><!-- /static demo corui menu  -->

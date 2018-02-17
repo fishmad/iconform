@@ -22,7 +22,7 @@ class SamplesController extends Controller
     {
 
         if (! Gate::allows('sample_browse')) {
-            return abort(401);
+          return abort(401);
         }
 
         $dbFields = DB::getSchemaBuilder()->getColumnListing('samples');
@@ -35,21 +35,27 @@ class SamplesController extends Controller
   {
     // $samples = Sample::select(['id', 'title', 'email', 'description', 'updated_at']);
     $samples = Sample::all();
-
     return Datatables::of($samples)
-      ->addColumn('action', function ($sample) {
 
-          $btns    = '<a href="/settings/samples/' . $sample->id . '" title="View" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-search-plus"></i></a> ';
-          $btns   .= '<a href="/settings/samples/' . $sample->id . '/edit" title="Edit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i></a> ';
-          $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="/settings/samples/' . $sample->id . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i>';
+    // ->addColumn('action', function ($sample) {
+    //     $btns    = '<a href="' . route('settings.samples.show', $sample->id) . '" title="View" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-search-plus"></i></a> ';
+    //     $btns   .= '<a href="' . route('settings.samples.edit', $sample->id) . '" title="Edit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i></a> ';
+    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="/settings/samples/' . $sample->id . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
+    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="' . route('settings.samples.destroy', $sample->id) . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
+    //   return $btns;
+    // })
 
-        return $btns;
+    ->editColumn('title', function($samples) {
+      $url = route('settings.samples.show', $samples->id);
+      return '<a href="' . $url . '">' . $samples->title . '</a>';
     })
-      ->make(true);
-	}
+    ->rawColumns(['title', 'action'])
+    ->addColumn('action', function ($samples) {
+      return view('settings.samples.datatables.action', compact('samples'))->render();
+    })
+    ->make(true);
+  }
 
-
-			
     /**
      * Display the specified resource.
      *

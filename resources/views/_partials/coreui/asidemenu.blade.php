@@ -1,3 +1,4 @@
+    <!-- Right offcanvas -->
     <aside class="aside-menu">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
@@ -273,4 +274,4 @@
           <small class="text-muted">25GB/256GB</small>
         </div>
       </div>
-    </aside>
+    </aside><!-- /Right offcanvas -->

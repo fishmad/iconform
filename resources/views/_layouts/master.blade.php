@@ -16,61 +16,43 @@
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-  @include('_partials.coreui.navbar')
-  
+
+  @include('_partials.coreui.header')
+
   <div class="app-body">
+
     @include('_partials.coreui.sidebar')
 
     <main class="main">
-{{ Breadcrumbs::render() }}
-        @if (Session::has('flash_message'))
-        <div class="container-fluid">
-          <div class="alert  alert-success alert-dismissible fade show" role="alert">
-            {{ Session::get('flash_message') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </div>
-        @endif
 
-        @if (Session::has('flash_danger'))
-        <div class="container-fluid">
-          <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-            {{ Session::get('flash_danger') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        </div>
-        @endif
+      {{--  @include('_partials.coreui.breadcrumbs-body')  --}}
 
+      @include('_partials.coreui.alerts')
+
+      <!-- Content -->
       @yield('content')
-    </main>
+
+    </main><!-- /Content -->
 
     @include('_partials.coreui.asidemenu')
-  </div>
+
+  </div><!-- /.app-body -->
 
   @include('_partials.coreui.footer')
 
-  @include('_partials.coreui.scripts')
-  
-  @stack('scripts')
+{{--  @include('_partials.coreui.scripts')  --}}
 
-  <!-- BODY options, add following classes to body to change options
-  '.header-fixed' - Fixed Header
-  '.brand-minimized' - Minimized brand (Only symbol)
-  '.sidebar-fixed' - Fixed Sidebar
-  '.sidebar-hidden' - Hidden Sidebar
-  '.sidebar-off-canvas' - Off Canvas Sidebar
-  '.sidebar-minimized'- Minimized Sidebar (Only icons)
-  '.sidebar-compact'    - Compact Sidebar
-  '.aside-menu-fixed' - Fixed Aside Menu
-  '.aside-menu-hidden'- Hidden Aside Menu
-  '.aside-menu-off-canvas' - Off Canvas Aside Menu
-  '.breadcrumb-fixed'- Fixed Breadcrumb
-  '.footer-fixed'- Fixed footer
-  -->
+  <!-- Default: Bootstrap and necessary plugins -->
+  <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/vendor/popper.min.js') }}"></script>
+  <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/vendor/pace.min.js') }}"></script>
+  <!-- Default: Plugins and scripts required by all views -->
+  <script src="{{ asset('js/vendor/Chart.min.js') }}"></script>
+  <!-- Default: CoreUI main scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+
+@stack('scripts')
 
   </body>
 </html>

@@ -8,6 +8,26 @@ body {
   color: #555;
 }
 
+
+.main .container,
+.main .container-fluid {
+  padding-top: 30px;
+}
+
+@media (max-width: 767px) {
+  .main .container,
+  .main .container-fluid {
+    padding-top: 15px;
+  }  
+}
+
+@media (max-width: 575px) {
+  .main .container,
+  .main .container-fluid {
+    padding-top: 10px;
+  }
+}
+
 .app-header.navbar .navbar-brand {
   background-size: 120px auto;
 }
@@ -20,8 +40,8 @@ table.dataTable {
   margin: 0 0 !important;
 }
 
-.breadcrumb,
-.breadcrumb.non-stock {
+/* header, */
+.breadcrumb {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;
@@ -31,6 +51,11 @@ table.dataTable {
   -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
   border: none;
+}
+
+.nav .navbar-nav .d-md-down-none li {
+  display: block;
+  padding: 0.5rem 1rem;
 }
 
 .card,
