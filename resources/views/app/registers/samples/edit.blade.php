@@ -2,15 +2,20 @@
 
 @section('content')
 
-      <div class="container-fluid">
+      <div class="container">
         <div class="animate fadeIn">
           <div class="card">
-            <div class="card-header">{{ $sample->title }}
-              <div class="card-actions">
-                <a href="#" class="btn-minimize"><i class="icon-arrow-down"></i></a>
-                <a href="#" class="btn-close"><i class="icon-close"></i></a>
-              </div>
+
+            <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
+              <h2><i class="fa fa-align-justify"></i> <strong>Editing </strong> {{ $sample->title }} 
+                <small>
+                    {{ $sample->title }}
+                </small>
+              </h2>
             </div>
+
+
+
             <div class="card-body">
 
               @if ($errors->any())

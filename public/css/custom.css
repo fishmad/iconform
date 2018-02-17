@@ -9,23 +9,8 @@ body {
 }
 
 
-.main .container,
-.main .container-fluid {
-  padding-top: 30px;
-}
-
-@media (max-width: 767px) {
-  .main .container,
-  .main .container-fluid {
-    padding-top: 15px;
-  }  
-}
-
-@media (max-width: 575px) {
-  .main .container,
-  .main .container-fluid {
-    padding-top: 10px;
-  }
+.app-body .main {
+  padding-top: 1.25rem;
 }
 
 .app-header.navbar .navbar-brand {

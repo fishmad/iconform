@@ -92,13 +92,13 @@ class PermissionController extends Controller
         $permission = Permission::findOrFail($id);
         
         if ($permission->name == "Administer roles & permissions") {
-            return redirect('settings/permissions')->with('flash_danger','WARNING This system requires the permission "' . $permission->name . '" to function correctly. You cannot delete this!');
+            return redirect('app/settings/permissions')->with('flash_danger','WARNING This system requires the permission "' . $permission->name . '" to function correctly. You cannot delete this!');
 						// return abort(401);
         }
         
         $permission->delete();
 
-        return redirect('settings/permissions')->with('flash_message','Deleted permission: ' . $permission->name);
+        return redirect('app/settings/permissions')->with('flash_message','Deleted permission: ' . $permission->name);
     }
 		
 		
@@ -134,7 +134,7 @@ class PermissionController extends Controller
             }
         }
 
-        return redirect('settings/permissions')->with('flash_message','Permission ' . $permission->name . ' added!');
+        return redirect('app/settings/permissions')->with('flash_message','Permission ' . $permission->name . ' added!');
     }
 
 
@@ -172,7 +172,7 @@ class PermissionController extends Controller
           $permission->roles()->detach();
         }
 
-        return redirect('settings/permissions')->with('flash_message','Permission ' . $permission->name . ' updated!');
+        return redirect('app/settings/permissions')->with('flash_message','Permission ' . $permission->name . ' updated!');
     }
 
 

@@ -8,15 +8,17 @@
 
       <div class="container-fluid">
         <div class="animate fadeIn">
+            
           <div class="card">
+
             <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
               <h2><i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
                 <small>
                   Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
                 </small>
               </h2>
-              
             </div>
+
             <div class="card-body">
 
               <table id="datatable" class="table table-responsive-sm" cellspacing="0" width="100%">
@@ -131,8 +133,34 @@
       } else
         alert("You have cancelled!");
     });
+
+
+    function confirmDel() {
+      event.preventDefault(); // prevent form submit
+      var form = event.target.form; // storing the form
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recore this record.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel please!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          form.submit();          // submitting the form when user press yes
+        } else {
+          swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+      });
+      }
+
   </script>
 
+  <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.12.3/dist/sweetalert2.all.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.js"></script>

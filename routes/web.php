@@ -2,15 +2,16 @@
 
 
 // Route::resource('/', 'Frontend\\FrontendController');
-Route::view('/', 'frontend.default')->name('welcome');
+// Route::view('/', 'frontend.default')->name('welcome');
 Route::view('about', 'frontend.pages.about')->name('about');
 Route::view('contact', 'frontend.pages.contact')->name('contact');
 Route::view('faq', 'frontend.pages.faq')->name('faq');
 
 Auth::routes();
 
-Route::view('app', 'app.default')->name('app');
-Route::get('app/dashboard', 'Dashboards\\DashboardController@index');
+Route::get('/', 'Dashboards\\DashboardController@index')->name('home');
+Route::get('app', 'Dashboards\\DashboardController@index')->name('app');
+Route::get('app/dashboard', 'Dashboards\\DashboardController@index')->name('dashboard');
 // Route::view('app/dashboard', 'app.dashboard.index')->name('dashboard');
 
 /* Settings */

@@ -2,17 +2,25 @@
 
 @section('content')
 
-      <div class="container-fluid">
+      <div class="container">
         <div class="animate fadeIn">
           <div class="card">
-            <div class="card-header">{{ $sample->title }}</div>
+
+            <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
+              <h2><i class="fa fa-align-justify"></i> <strong>Viewing</strong> {{ $sample->title }} 
+                <small>
+                    {{ $sample->title }}
+                </small>
+              </h2>
+            </div>
+
             <div class="card-body">
 
               <a href="{{ route('app.registers.samples.index') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
               <a href="{{ route('app.registers.samples.edit', $sample->id) }}" title="Edit Sample"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
               {!! Form::open([
                 'method'=>'DELETE',
-                'url' => ['registers/samples', $sample->id],
+                'url' => ['app/registers/samples', $sample->id],
                 'style' => 'display:inline'
               ]) !!}
               {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(

@@ -19,7 +19,7 @@
               </ul>
               @endif
 
-              {!! Form::open(['url' => '/admin/permissions', 'class' => 'form-horizontal', 'files' => true]) !!}
+              {!! Form::open(['url' => '/app/settings/permissions', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 <div class="form-group row {{ $errors->has('groupings') ? 'has-error' : ''}}">
                   {!! Form::label('groupings', 'Permission belongs to group', ['class' => 'col-md-3 col-form-label']) !!}

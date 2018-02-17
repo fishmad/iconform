@@ -87,13 +87,13 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
 		
         if ($role->id == 1 | $role->id == 2) { // I am Super Administrator or Admin
-            return redirect('settings/roles')->with('flash_danger','WARNING You cannot delete "System Admistrator" roles these are required for security.');
+            return redirect('app/settings/roles')->with('flash_danger','WARNING You cannot delete "System Admistrator" roles these are required for security.');
 			  // return abort(401);
         }
 		
         $role->delete();
 
-        return redirect('settings/roles')->with('flash_message','Role deleted!');
+        return redirect('app/settings/roles')->with('flash_message','Role deleted!');
     }
 	
 
@@ -128,7 +128,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);
         }
 
-        return redirect('settings/roles')->with('flash_message','Role ' . $role->name . ' added!');
+        return redirect('app/settings/roles')->with('flash_message','Role ' . $role->name . ' added!');
     }
 	
 
@@ -161,7 +161,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  
         }
 
-        return redirect('settings/roles')->with('flash_message','Role '. $role->name . ' updated!');
+        return redirect('app/settings/roles')->with('flash_message','Role '. $role->name . ' updated!');
     }
 
 
