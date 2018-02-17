@@ -1,6 +1,3 @@
-{{--  @php
-$breadcrumbs = Breadcrumbs::generate()
-@endphp  --}}
 
 @if(count($breadcrumbs))
 @foreach ($breadcrumbs as $breadcrumb)
