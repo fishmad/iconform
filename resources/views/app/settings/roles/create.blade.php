@@ -50,8 +50,8 @@
                     <strong>{!! Form::label($groupings, $groupings) !!}</strong>
 @foreach ($permissions as $permission)
                     <div class="checkbox abc-checkbox abc-checkbox-info">
-                      {!! Form::checkbox('permissions[]', $permission->id, null, ['id' => 'chkbx' . $permission->id,'class' => 'styled']) !!}
-                      <label for="chkbx{{ $permission->id }}">
+                      {!! Form::checkbox('permissions[]', $permission->id, null, ['id' => 'checkbox' . $permission->id,'class' => ' col-form-label']) !!}
+                      <label class="form-check-label" for="checkbox{{ $permission->id }}">
                         {{ $permission->item_order }} {{ ucfirst($permission->label) }}
                       </label>
                     </div>
@@ -74,7 +74,7 @@
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-              Add Role form
+              Add role form
             </div>
 
           </div><!-- ./card-->

@@ -8,7 +8,7 @@
 
             <div class="card-header">
               <a href="{{ route('app.settings.permissions.create') }}" class="btn btn-outline-primary float-right">
-                Add Permissions
+                Add New Permission
               </a>
               <h2><i class="fa fa-align-justify"></i> <strong>Permission</strong> Administration
                 <small>

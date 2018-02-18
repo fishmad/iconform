@@ -66,21 +66,23 @@
                 </div>
               </div>  --}}
 
-              <hr />
+              <hr>
 
-              <div class="form-group row {{ $errors->has('role') ? 'has-error' : ''}}">
-                {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
-                <div class="col-md-9 col-lg-8">
-                  @foreach ($roles as $role) 
-                  <div class="checkbox">
-                    <label>
-                      {{ Form::checkbox('roles[]', $role->id) }}
+              <div class="form-group row">
+                {!! Form::label('role', 'Attach to roles', ['class' => 'col-md-3 col-lg-2 col-form-label iconform-chklabel']) !!}
+                <div class="col-md-9 col-lg-10">
+@if(!$roles->isEmpty())
+@foreach ($roles as $role)
+                  <div class="form-check abc-checkbox abc-checkbox-info">
+                    {!! Form::checkbox('roles[]', $role->id, null, ['id' => 'checkbox' . $role->id,'class' => 'form-check-input']) !!}
+                    <label class="form-check-label" for="checkbox{{ $role->id }}">
                       {{ ucfirst($role->name) }}
                     </label>
                   </div>
-                  @endforeach
-                </div>
-              </div>
+@endforeach
+@endif
+                </div><!-- /.col-md-9.col-lg-8 -->
+              </div><!-- /.form-group row -->
 
               <hr />
 
@@ -104,24 +106,29 @@
       </div><!-- ./container-fluid-->
 @endsection
 
+@push('head_scripts')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.0/awesome-bootstrap-checkbox.min.css" rel="stylesheet" type="text/css"/>
+@endpush
 
+@push('scripts')
 <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
 </script>
+@endpush

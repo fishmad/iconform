@@ -10,7 +10,7 @@
               <a href="{{ route('app.settings.users.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
                 <i class="fa fa-arrow-left"></i> Back
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Display</strong> User
+              <h2><i class="fa fa-align-justify"></i> <strong>Show</strong> User
                 <small>
                     {{ $user->name }}
                 </small>
@@ -40,16 +40,20 @@
                     <td>{{ $user->email }}</td>
                   </tr>
                   <tr>
-                    <th scope="row">System Roles</th>
-                    <td>{{ $user->roles()->pluck('name')->implode('; ') }}</td>
-                  </tr>
-                  <tr>
                     <th scope="row">Date Registered</th>
                     <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
                   </tr>
                   <tr>
                     <th scope="row">Last Updated</th>
                     <td>{{ $user->updated_at->format('F d, Y h:ia') }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Roles</th>
+                    <td>{{ $user->roles()->pluck('name')->implode('; ') }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Permissions</th>
+                    <td>TBA</td>
                   </tr>
                 </tbody>
               </table>

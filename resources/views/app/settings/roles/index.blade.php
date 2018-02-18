@@ -8,7 +8,7 @@
 
             <div class="card-header">
               <a href="{{ route('app.settings.roles.create') }}" class="btn btn-outline-primary float-right">
-                Add a new Role
+                Create New Roles
               </a>
               <h2><i class="fa fa-align-justify"></i> <strong>Role</strong> Administration
                 <small>

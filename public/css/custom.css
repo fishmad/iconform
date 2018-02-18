@@ -79,3 +79,7 @@ table.dataTable {
 .abc-checkbox label {
   padding-top: 3px;
 }
+
+.iconform-chklabel {
+  padding-top: 0px;
+}

@@ -41,18 +41,16 @@
           <hr>
 
           <div class="form-group row">
-            {!! Form::label('role', 'Attached to Roles', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
+            {!! Form::label('role', 'Attached to Roles', ['class' => 'col-md-3 col-lg-2 col-form-label iconform-chklabel']) !!}
             <div class="col-md-9 col-lg-10">
 @if(!$roles->isEmpty())
 @foreach ($roles as $role)
-
               <div class="form-check abc-checkbox abc-checkbox-info checkbox-inline">
                 {!! Form::checkbox('roles[]', $role->id, null, ['id' => 'checkbox' . $role->id,'class' => 'form-check-input']) !!}
                 <label class="form-check-label" for="checkbox{{ $role->id }}">
                   {{ ucfirst($role->name) }}
                 </label>
               </div>
-
 @endforeach
 @endif
             </div><!-- /.col-md-9.col-lg-8 -->

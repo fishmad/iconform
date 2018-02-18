@@ -54,7 +54,7 @@
                 </div>
               </div>
 
-              <hr />
+              {{--  <hr />
 
               <div class="form-group row {{ $errors->has('role') ? 'has-error' : ''}}">
                 {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
@@ -70,7 +70,28 @@
                   @endforeach
                 @endif
                 </div>
-              </div>
+              </div>  --}}
+
+
+              <hr>
+
+              <div class="form-group row">
+                {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-lg-2 col-form-label iconform-chklabel']) !!}
+                <div class="col-md-9 col-lg-10">
+@if(!$roles->isEmpty())
+@foreach ($roles as $role)
+                  <div class="form-check abc-checkbox abc-checkbox-info">
+                    {!! Form::checkbox('roles[]', $role->id, null, ['id' => 'checkbox' . $role->id,'class' => 'form-check-input']) !!}
+                    <label class="form-check-label" for="checkbox{{ $role->id }}">
+                      {{ ucfirst($role->name) }}
+                    </label>
+                  </div>
+@endforeach
+@endif
+                </div><!-- /.col-md-9.col-lg-8 -->
+              </div><!-- /.form-group row -->
+
+
 
               <hr />
 
@@ -96,3 +117,7 @@
       </div><!-- ./container-fluid-->
 
 @endsection
+
+@push('head_scripts')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.0/awesome-bootstrap-checkbox.min.css" rel="stylesheet" type="text/css"/>
+@endpush
