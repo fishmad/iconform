@@ -61,17 +61,21 @@ table.dataTable {
 }
 
 .card-header h2 {
-	margin: 0;
-	color: #111;
+  margin: 0;
+  color: #111;
   font-size: 18px;
   font-weight: normal;
 }
 
 .card-header h2 small {
-	text-transform: none;
-    display: block;
-    font-size: 12px;
-    margin-top: 5px;
-    color: #999;
-    line-height: 15px;
+  text-transform: none;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+  color: #999;
+  line-height: 15px;
+}
+
+.abc-checkbox label {
+  padding-top: 3px;
 }

@@ -7,11 +7,11 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
   <title>iConform Worker Safety &amp; Compliance Management System</title>
-  <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/simple-line-icons.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  
-  @stack('head_scripts')
+  <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/simple-line-icons.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
+   @stack('head_scripts')
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css"> 
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 </head>
 

@@ -18,6 +18,18 @@
       ]
     },
     {
+      "section": "Registers",
+      "icon": "<i class=\"icon-puzzle\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "Samples Register",
+          "link": "\/app\/registers\/samples",
+          "icon": "<i class=\"icon-puzzle\"><\/i>"
+        }
+      ]
+    },
+    {
       "section": "Users & Roles",
       "icon": "<i class=\"icon-people\"><\/i>",
       "flag": "dropdown",
@@ -48,18 +60,6 @@
           "name": "CRUD Generator",
           "link": "\/app\/tools\/crud",
           "icon": "<i class=\"icon-grid\"><\/i>"
-        }
-      ]
-    },
-    {
-      "section": "Registers",
-      "icon": "<i class=\"icon-puzzle\"><\/i>",
-      "flag": "dropdown",
-      "items": [
-        {
-          "name": "Samples Register",
-          "link": "\/app\/registers\/samples",
-          "icon": "<i class=\"icon-puzzle\"><\/i>"
         }
       ]
     },

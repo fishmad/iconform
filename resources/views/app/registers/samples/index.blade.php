@@ -1,9 +1,5 @@
 @extends('_layouts.master')
 
-@push('head_scripts')
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.css"/>
-@endpush
-
 @section('content')
 
       <div class="container-fluid">
@@ -11,7 +7,10 @@
             
           <div class="card">
 
-            <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
+            <div class="card-header">
+              <a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">
+                Create a new Record
+              </a>
               <h2><i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
                 <small>
                   Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
@@ -41,6 +40,10 @@
         </div><!-- ./animate fadeIn-->
       </div><!-- ./container || container-fluid-->
 @endsection
+
+@push('head_scripts')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.css"/>
+@endpush
 
 @push('scripts')
   <script>

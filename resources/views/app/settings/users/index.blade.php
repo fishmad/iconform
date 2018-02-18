@@ -1,25 +1,23 @@
 @extends('_layouts.master')
+
 @section('content')
 
       <div class="container-fluid">
         <div class="animate fadeIn">
           <div class="card">
+
             <div class="card-header">
-              User Administration
-            </div>
-            <div class="card-body">
-              <a href="{{ url('/app/settings/users/create') }}" class="btn btn-primary" title="Add User">
-                <i class="fa fa-plus" aria-hidden="true"></i> Add User
+              <a href="{{ route('app.settings.users.create') }}" class="btn btn-outline-primary float-right">
+                Add a new User
               </a>
-              {{--  {!! Form::open(['method' => 'GET', 'url' => '/app/settings/users', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
-              <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> </button>
-                </span>
-              </div>
-              {!! Form::close() !!}  --}}
-              <br /><br />
+              <h2><i class="fa fa-align-justify"></i> <strong>User</strong> Administration
+                <small>
+                  Create, read, update and delete users from this screen.
+                </small>
+              </h2>
+            </div><!-- ./card-header-->
+
+            <div class="card-body">
               <table class="table table-responsive-sm table-bordered">
                 <thead>
                   <tr>
@@ -57,7 +55,7 @@
                           'type' => 'submit',
                           'class' => 'btn btn-danger btn-sm',
                           'title' => 'Delete User',
-                          'onclick'=>'return confirm("Confirm delete?")'
+                          'onclick'=>'confirmDel()'
                           )) !!}
                       {!! Form::close() !!}
                     </td>
@@ -67,8 +65,43 @@
               </table>
               {{--<div class="pagination-wrapper"> {!! $users->appends(['search' => Request::get('search')])->render() !!} </div>--}}
             </div><!-- ./card-body-->
+
+            <div class="card-footer">
+              Users list
+            </div>
+
           </div><!-- ./card-->
         </div><!-- ./animate fadeIn-->
       </div><!-- ./container-fluid-->
 
 @endsection
+
+
+@push('scripts')
+  <script>
+    function confirmDel() {
+      event.preventDefault(); // prevent form submit
+      var form = event.target.form; // storing the form
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recovery this record.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel please!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      },
+      function(isConfirm){
+        if (isConfirm) {
+          form.submit();          // submitting the form when user press yes
+        } else {
+          swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+      });
+    }
+  </script>
+
+  <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.12.3/dist/sweetalert2.all.js"></script>
+@endpush

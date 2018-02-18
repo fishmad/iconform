@@ -102,46 +102,7 @@ class PermissionController extends Controller
     }
 		
 		
-		
-		
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        
-        $this->validate($request, [
-            'name'=>'required|max:40',
-        ]);
-
-        $name = $request['name'];
-        $permission = new Permission();
-        $permission->name = $name;
-
-        $roles = $request['roles'];
-        
-        $permission->save();
-
-        if (!empty($request['roles'])) {
-            foreach ($roles as $role) {
-                $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
-
-                $permission = Permission::where('name', '=', $name)->first();   
-                $r->givePermissionTo($permission);
-            }
-        }
-
-        return redirect('app/settings/permissions')->with('flash_message','Permission ' . $permission->name . ' added!');
-    }
-
-
-
-
-
-    /**
+		    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -152,7 +113,7 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
         $this->validate($request, [
-            'name'=>'required|max:40',
+            'name'=>'required|max:255',
         ]);
 
         // Grab 'only' the posted 'permissions specific fields' and cast into variable called: $input, except 'role[] fields' as this gets saved into a seperate db table 'role_has_permissions'.
@@ -174,6 +135,45 @@ class PermissionController extends Controller
 
         return redirect('app/settings/permissions')->with('flash_message','Permission ' . $permission->name . ' updated!');
     }
+
+		
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+        $this->validate($request, [
+            'name'=>'required|max:40',
+        ]);
+
+        $permission = new Permission();
+        $input = $request->except(['roles']);
+        $permission->fill($input)->save();
+
+        $permission->name = $request->name;
+        $roles = $request['roles'];
+
+        if (!empty($request['roles'])) {
+          foreach ($roles as $role) {
+            $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
+
+            $permission = Permission::where('name', '=', $permission->name)->first();   
+            $r->givePermissionTo($permission);
+          }
+        }
+
+        return redirect('app/settings/permissions')->with('flash_message','Permission ' . $permission->name . ' added!');
+    }
+
+
+
+
+
+
 
 
 }

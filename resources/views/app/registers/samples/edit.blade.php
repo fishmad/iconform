@@ -6,31 +6,32 @@
         <div class="animate fadeIn">
           <div class="card">
 
-            <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
+            <div class="card-header">
+              <a href="{{ route('app.registers.samples.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
+                <i class="fa fa-arrow-left"></i> Back
+              </a>
               <h2><i class="fa fa-align-justify"></i> <strong>Editing </strong> {{ $sample->title }} 
                 <small>
-                    {{ $sample->title }}
+                  {{ $sample->title }}
                 </small>
               </h2>
             </div>
 
-
-
             <div class="card-body">
 
               @if ($errors->any())
-                <ul class="alert alert-danger">
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
+              <ul class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
               @endif
 
               {!! Form::model($sample, [
-                  'method' => 'PATCH',
-                  'url' => ['/app/registers/samples', $sample->id],
-                  'class' => 'form-horizontal',
-                  'files' => true
+                'method' => 'PATCH',
+                'url' => ['/app/registers/samples', $sample->id],
+                'class' => 'form-horizontal',
+                'files' => true
               ]) !!}
 
               @include ('app.registers.samples.form', ['submitButtonText' => 'Update'])

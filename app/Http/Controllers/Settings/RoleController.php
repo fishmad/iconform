@@ -39,10 +39,12 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-		// return redirect('roles');
-		$role = Role::findOrFail($id);
-			
-		return view('app.settings.roles.show', compact('role'));
+      $role = Role::findOrFail($id);
+
+      $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+
+      return view('app.settings.roles.show', compact('role', 'permissions'));
+
     }
 	
 
@@ -54,12 +56,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
-        // $permissions = Permission::all();
-        $permissions = Permission::orderBy('groupings_order', 'asc')->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+      $role = Role::findOrFail($id);
 
-        //dd($permissions);
-        return view('app.settings.roles.edit', compact('role', 'permissions'));
+      $permissions = Permission::orderBy('groupings_order', 'asc')->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+
+      return view('app.settings.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -69,9 +70,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::all();
 
-        // return view('app.settings.roles.create', ['permissions'=>$permissions]);
+        $permissions = Permission::orderBy('groupings_order', 'asc')->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+
         return view('app.settings.roles.create', compact('permissions'));
     }
 
@@ -109,9 +110,9 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required|unique:roles|max:10',
-            'permissions' =>'required',
-            ]
+          'name'=>'required|unique:roles|max:10',
+          'permissions' =>'required',
+          ]
         );
 
         $name = $request['name'];
@@ -128,7 +129,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);
         }
 
-        return redirect('app/settings/roles')->with('flash_message','Role ' . $role->name . ' added!');
+        return redirect('app/settings/roles')->with('flash_message', $role->name . ' was created!');
     }
 	
 
@@ -161,7 +162,7 @@ class RoleController extends Controller
             $role->givePermissionTo($p);  
         }
 
-        return redirect('app/settings/roles')->with('flash_message','Role '. $role->name . ' updated!');
+        return redirect('app/settings/roles')->with('flash_message', $role->name . ' role has been updated!');
     }
 
 

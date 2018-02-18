@@ -1,60 +1,65 @@
 @extends('_layouts.master')
+
 @section('content')
 
-      <div class="container-fluid">
+      <div class="container">
         <div class="animate fadeIn">
           <div class="card">
+
             <div class="card-header">
-              Displaying User: {{ $user->name }}
-            </div>
+              <a href="{{ route('app.settings.users.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
+                <i class="fa fa-arrow-left"></i> Back
+              </a>
+              <h2><i class="fa fa-align-justify"></i> <strong>Display</strong> User
+                <small>
+                    {{ $user->name }}
+                </small>
+              </h2>
+            </div><!-- ./card-header-->
 
             <div class="card-body">
 
-                  {!! Form::open([
-                    'method'=>'DELETE',
-                    'url' => ['settings/users', $user->id],
-                    'class' => 'float-right',
-                  ]) !!}
-    {{--  <div class="btn-group" role="group" aria-label="Basic example">  --}}
-                  <a href="{{ url('/app/settings/users') }}" class="btn btn-success btn-sm" title="Back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-                  <a href="{{ url('/app/settings/users/' . $user->id . '/edit') }}" class="btn btn-warning btn-sm" title="Edit User"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                    {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                        'type' => 'submit',
-                        'class' => 'btn btn-danger btn-sm',
-                        'title' => 'Delete User',
-                        'onclick'=>'return confirm("Confirm delete?")'
-                    ))!!}
-                  {!! Form::close() !!}
-
-              <br />
-              <br />
-
-              <table class="table table-responsive-sm table-bordered">
+              <table class="table table-responsive-sm">
+                <thead>
+                  <tr class="table-secondary">
+                    <th>Label</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
                 <tbody>
                   <tr>
-                    <th>ID</th>
+                    <th scope="row">DB ID</th>
                     <td>{{ $user->id }}</td>
                   </tr>
                   <tr>
-                    <th>Name</th>
+                    <th scope="row">Name</th>
                     <td>{{ $user->name }}</td>
                   </tr>
                   <tr>
-                    <th>Email</th>
+                    <th scope="row">Email</th>
                     <td>{{ $user->email }}</td>
                   </tr>
                   <tr>
-                    <th>Roles</th>
-                    <td>{{ $user->roles()->pluck('name')->implode('; ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
+                    <th scope="row">System Roles</th>
+                    <td>{{ $user->roles()->pluck('name')->implode('; ') }}</td>
                   </tr>
                   <tr>
-                    <th>Date</th>
-                    <td>{{ $user->created_at->format('F d, Y h:ia') }} </td>
+                    <th scope="row">Date Registered</th>
+                    <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Last Updated</th>
+                    <td>{{ $user->updated_at->format('F d, Y h:ia') }}</td>
                   </tr>
                 </tbody>
               </table>
 
             </div><!-- ./card-body-->
+
+            <div class="card-footer">
+              User details
+            </div>
+
           </div><!-- ./card-->
         </div><!-- ./animate fadeIn-->
       </div><!-- ./container-fluid-->
