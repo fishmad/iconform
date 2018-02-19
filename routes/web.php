@@ -38,26 +38,25 @@ Route::namespace('Registers')->prefix('app/registers')->name('app.registers.')->
 /* Settings - vendor routes requiring auth protection */
 Route::middleware('auth')->group(function() {
   // Section CoreUI elements
-  Route::view('/blank', 'blank');
   // Route::view('/demo', 'demo.coreui.dashboard');
   // Route::view('/demo/coreui', 'demo.coreui.dashboard');
-  // Route::view('/demo/coreui/dashboard', 'demo.coreui.dashboard');
-  Route::view('/demo/coreui/buttons', 'demo.coreui.buttons');
-  Route::view('/demo/coreui/social', 'demo.coreui.social');
-  Route::view('/demo/coreui/cards', 'demo.coreui.cards');
-  Route::view('/demo/coreui/forms', 'demo.coreui.forms');
-  Route::view('/demo/coreui/modals', 'demo.coreui.modals');
-  Route::view('/demo/coreui/switches', 'demo.coreui.switches');
-  Route::view('/demo/coreui/tables', 'demo.coreui.tables');
-  Route::view('/demo/coreui/tabs', 'demo.coreui.tabs');
-  Route::view('/demo/coreui/icons-font-awesome', 'demo.coreui.font-awesome-icons');
-  Route::view('/demo/coreui/icons-simple-line', 'demo.coreui.simple-line-icons');
-  Route::view('/demo/coreui/widgets', 'demo.coreui.widgets');
-  Route::view('/demo/coreui/charts', 'demo.coreui.charts');
-  Route::view('/demo/coreui/error404','demo.coreui._errors.404');
-  Route::view('/demo/coreui/error500','demo.coreui._errors.500');
-  Route::view('/demo/coreui/login','demo.coreui.pages.login');
-  Route::view('/demo/coreui/register','demo.coreui.pages.register');
+  Route::view('/demo/coreui/dashboard', 'vendor.demo.coreui.dashboard');
+  Route::view('/demo/coreui/buttons', 'vendor.demo.coreui.buttons');
+  Route::view('/demo/coreui/social', 'vendor.demo.coreui.social');
+  Route::view('/demo/coreui/cards', 'vendor.demo.coreui.cards');
+  Route::view('/demo/coreui/forms', 'vendor.demo.coreui.forms');
+  Route::view('/demo/coreui/modals', 'vendor.demo.coreui.modals');
+  Route::view('/demo/coreui/switches', 'vendor.demo.coreui.switches');
+  Route::view('/demo/coreui/tables', 'vendor.demo.coreui.tables');
+  Route::view('/demo/coreui/tabs', 'vendor.demo.coreui.tabs');
+  Route::view('/demo/coreui/icons-font-awesome', 'vendor.demo.coreui.font-awesome-icons');
+  Route::view('/demo/coreui/icons-simple-line', 'vendor.demo.coreui.simple-line-icons');
+  Route::view('/demo/coreui/widgets', 'vendor.demo.coreui.widgets');
+  Route::view('/demo/coreui/charts', 'vendor.demo.coreui.charts');
+  Route::view('/demo/coreui/error404','vendor.demo.coreui._errors.404');
+  Route::view('/demo/coreui/error500','vendor.demo.coreui._errors.500');
+  Route::view('/demo/coreui/login','vendor.demo.coreui.pages.login');
+  Route::view('/demo/coreui/register','vendor.demo.coreui.pages.register');
 });
 
 // Section Pages

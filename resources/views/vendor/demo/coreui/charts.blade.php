@@ -1,4 +1,4 @@
-@extends('demo.coreui')
+@extends('_layouts.demo-coreuir')
 @section('content')
 <div class="container-fluid">
     <div class="animated fadeIn">
