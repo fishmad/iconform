@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -39,17 +40,19 @@ class PermissionController extends Controller
      */
     public function show($id)
     {
+
+      $permission = Permission::findOrFail($id);
       
-      // return redirect('permissions');
+      $roles = $permission->roles()->get();
 
-			$permission = Permission::findOrFail($id);
-			
-      return view('app.settings.permissions.show', compact('permission'));
-			
+      $users = User::permission($permission)->get();
+
+      return view('app.settings.permissions.show', compact('permission', 'roles', 'users'));
+
     }
-		
 
-		
+
+
     /**
      * Show the form for editing the specified resource.
      *

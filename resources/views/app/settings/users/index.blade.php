@@ -8,9 +8,9 @@
 
             <div class="card-header">
               <a href="{{ route('app.settings.users.create') }}" class="btn btn-outline-primary float-right">
-                Add a new User
+                Create User
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>User</strong> Administration
+              <h2><i class="fa fa-align-justify"></i> <strong>Users</strong> List
                 <small>
                   Create, read, update and delete users from this screen.
                 </small>

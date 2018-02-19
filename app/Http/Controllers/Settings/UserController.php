@@ -168,26 +168,6 @@ class UserController extends Controller
 
         return redirect('app/settings/users')->with('flash_message', 'User successfully edited.');
 
-
-
-
-
-
-
-        $input = $request->only(['name', 'email', 'password']);
-        $newPassword = $request->get('password');
-        $roles = $request['roles'];
-
-        if(empty($newPassword)) {
-            $user->update($input->except('password'));
-        } else {
-            $user->fill($input)->save();
-        }
-        
-
-
-
-
     }
 
 }

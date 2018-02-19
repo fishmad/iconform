@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -39,11 +40,14 @@ class RoleController extends Controller
      */
     public function show($id)
     {
+
       $role = Role::findOrFail($id);
 
       $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
 
-      return view('app.settings.roles.show', compact('role', 'permissions'));
+      $users = User::role($role)->get();
+
+      return view('app.settings.roles.show', compact('role', 'permissions', 'users'));
 
     }
 	

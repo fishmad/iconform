@@ -8,9 +8,9 @@
 
             <div class="card-header">
               <a href="{{ route('app.settings.permissions.create') }}" class="btn btn-outline-primary float-right">
-                Add New Permission
+                Add Permission
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Permission</strong> Administration
+              <h2><i class="fa fa-align-justify"></i> <strong>Permissions</strong> List
                 <small>
                   Create, read, update and delete permissions from this screen.
                 </small>
