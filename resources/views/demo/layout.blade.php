@@ -1,7 +1,7 @@
 <!--
  * CoreUI - Open Source Bootstrap Admin Template
  * @version v1.0.6
- * @link http://coreui.io
+ * @link http://io
  * Copyright (c) 2017 creativeLabs Łukasz Holeczek
  * @license MIT
  -->
@@ -24,7 +24,7 @@
   <!-- Main styles for this application -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <!-- Styles required by this views -->
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  
+  {{--  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">  --}}
 </head>
 <!-- BODY options, add following classes to body to change options
 '.header-fixed' - Fixed Header
@@ -42,27 +42,27 @@
 -->
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-  @include('demo.coreui._partials.navbar')
+  @include('demo._parts.navbar')
   
   <div class="app-body">
-    @include('demo.coreui._partials.sidebar')
+    @include('demo._parts.sidebar')
     <!-- Main content -->
     <main class="main">
 
       <!-- Breadcrumb -->
-      @include('demo.coreui._partials.breadcrumb')
+      @include('demo._parts.breadcrumb')
 
       @yield('content')
       <!-- /.container-fluid -->
     </main>
 
-    @include('demo.coreui._partials.asidemenu')
+    @include('demo._parts.asidemenu')
 
   </div>
 
-  @include('demo.coreui._partials.footer')
+  @include('demo._parts.footer')
 
-  @include('demo.coreui._partials.scripts')
+  @include('demo._parts.scripts')
   @yield('myscript')
 
 </body>

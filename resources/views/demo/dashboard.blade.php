@@ -1,4 +1,4 @@
-@extends('_layouts.demo-coreuir')
+@extends('demo.layout')
 @section('content')
 
 <div class="container-fluid">
@@ -878,5 +878,5 @@
 <!-- /.conainer-fluid -->
 
 @section('myscript')
-  <script src="{{ asset('js/views/main.js') }}"></script>
+<script src="{{ asset('js/views/main.js') }}"></script>
 @endsection

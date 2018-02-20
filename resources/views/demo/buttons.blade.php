@@ -1,4 +1,4 @@
-@extends('_layouts.demo-coreuir')
+@extends('demo.layout')
 @section('content')
 	      <div class="container-fluid">
         <div class="animated fadeIn">

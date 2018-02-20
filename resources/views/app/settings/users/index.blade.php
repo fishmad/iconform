@@ -76,32 +76,9 @@
 
 @endsection
 
-
 @push('scripts')
-  <script>
-    function confirmDel() {
-      event.preventDefault(); // prevent form submit
-      var form = event.target.form; // storing the form
-      swal({
-        title: "Are you sure?",
-        text: "You will not be able to recovery this record.",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel please!",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function(isConfirm){
-        if (isConfirm) {
-          form.submit();          // submitting the form when user press yes
-        } else {
-          swal("Cancelled", "Your imaginary file is safe :)", "error");
-        }
-      });
-    }
-  </script>
-
-  <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.12.3/dist/sweetalert2.all.js"></script>
+  <script type="text/javascript" src="{{ asset('js/iconform/sweetalert.js') }}"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.11/sweetalert2.all.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 @endpush

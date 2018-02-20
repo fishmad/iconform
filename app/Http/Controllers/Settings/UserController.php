@@ -29,11 +29,6 @@ class UserController extends Controller
 
         return view('app.settings.users.index')->with('users', $users);
 
-        // $user = User::findOrFail($id);
-        // $roles = Role::get();
-
-        // return view('admin.users.edit', compact('user', 'roles'));
-
     }
 
 
@@ -47,26 +42,9 @@ class UserController extends Controller
     public function show($id)
     {
 
-
-      // $role = Role::findOrFail($id);
-      // $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
-      // $users = User::role($role)->get();
-
-      $role = Role::get();
         $user = User::findOrFail($id);
-        $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
-        //$roles = Role::get();
-
-
-        //$roles = User::roles()->get();
-        //$permissions = $roles->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
-        //$permissions = Permission::find($id);
-        //$users = User::role($role)->get();
-        //$permissions User::role($role)->Permission::($permissions)get();
-        
-        // $permissions = User::with('roles.permissions')->get();
-        
-        //dd($permissions);
+        $permissions = $user->getAllPermissions()->groupBy('groupings');
+        $roles = $user->getRoleNames(); // Returns a collection
 
         return view('app.settings.users.show', compact('user', 'permissions', 'roles'));
 

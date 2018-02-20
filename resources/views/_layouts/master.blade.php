@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
 </head>
 
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<body class="app header-fixed sidebar-minimized aside-menu-fixed aside-menu-hidden">
 
   @include('_partials.coreui.header')
 
@@ -39,8 +39,6 @@
 
   @include('_partials.coreui.footer')
 
-{{--  @include('_partials.coreui.scripts')  --}}
-
   <!-- Default: Bootstrap and necessary plugins -->
   <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
   <script src="{{ asset('js/vendor/popper.min.js') }}"></script>
@@ -50,7 +48,6 @@
   <script src="{{ asset('js/vendor/Chart.min.js') }}"></script>
   <!-- Default: CoreUI main scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
-
 @stack('scripts')
 
   </body>

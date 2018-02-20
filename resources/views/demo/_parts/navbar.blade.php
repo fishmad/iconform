@@ -9,7 +9,7 @@
 
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
-      <a class="nav-link" href="/">Blank App</a>
+      <a class="nav-link" href="/demo/all">Blank App</a>
     </li>
 {{-- 
     <li class="nav-item px-3">

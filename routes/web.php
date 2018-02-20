@@ -36,28 +36,27 @@ Route::namespace('Registers')->prefix('app/registers')->name('app.registers.')->
 
 
 /* Settings - vendor routes requiring auth protection */
-Route::middleware('auth')->group(function() {
+//Route::middleware('auth')->group(function() {
   // Section CoreUI elements
-  // Route::view('/demo', 'demo.coreui.dashboard');
-  // Route::view('/demo/coreui', 'demo.coreui.dashboard');
-  Route::view('/demo/coreui/dashboard', 'vendor.demo.coreui.dashboard');
-  Route::view('/demo/coreui/buttons', 'vendor.demo.coreui.buttons');
-  Route::view('/demo/coreui/social', 'vendor.demo.coreui.social');
-  Route::view('/demo/coreui/cards', 'vendor.demo.coreui.cards');
-  Route::view('/demo/coreui/forms', 'vendor.demo.coreui.forms');
-  Route::view('/demo/coreui/modals', 'vendor.demo.coreui.modals');
-  Route::view('/demo/coreui/switches', 'vendor.demo.coreui.switches');
-  Route::view('/demo/coreui/tables', 'vendor.demo.coreui.tables');
-  Route::view('/demo/coreui/tabs', 'vendor.demo.coreui.tabs');
-  Route::view('/demo/coreui/icons-font-awesome', 'vendor.demo.coreui.font-awesome-icons');
-  Route::view('/demo/coreui/icons-simple-line', 'vendor.demo.coreui.simple-line-icons');
-  Route::view('/demo/coreui/widgets', 'vendor.demo.coreui.widgets');
-  Route::view('/demo/coreui/charts', 'vendor.demo.coreui.charts');
-  Route::view('/demo/coreui/error404','vendor.demo.coreui._errors.404');
-  Route::view('/demo/coreui/error500','vendor.demo.coreui._errors.500');
-  Route::view('/demo/coreui/login','vendor.demo.coreui.pages.login');
-  Route::view('/demo/coreui/register','vendor.demo.coreui.pages.register');
-});
+
+  Route::view('/demo/all', 'demo.dashboard');
+  Route::view('/demo/buttons', 'demo.buttons');
+  Route::view('/demo/social', 'demo.social');
+  Route::view('/demo/cards', 'demo.cards');
+  Route::view('/demo/forms', 'demo.forms');
+  Route::view('/demo/modals', 'demo.modals');
+  Route::view('/demo/switches', 'demo.switches');
+  Route::view('/demo/tables', 'demo.tables');
+  Route::view('/demo/tabs', 'demo.tabs');
+  Route::view('/demo/icons-font-awesome', 'demo.font-awesome-icons');
+  Route::view('/demo/icons-simple-line', 'demo.simple-line-icons');
+  Route::view('/demo/widgets', 'demo.widgets');
+  Route::view('/demo/charts', 'demo.charts');
+  Route::view('/demo/error404','demo._errors.404');
+  Route::view('/demo/error500','demo._errors.500');
+  Route::view('/demo/login','demo.pages.login');
+  Route::view('/demo/register','demo.pages.register');
+//});
 
 // Section Pages
 Route::view('/error404','_errors.404')->name('error404');
