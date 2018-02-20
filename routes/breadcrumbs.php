@@ -118,6 +118,11 @@ Breadcrumbs::register('app.settings.permissions.edit', function ($breadcrumbs, $
 });
 #################################################################################
 
+// Home > Registers
+Breadcrumbs::register('app.registers', function ($breadcrumbs) {
+  $breadcrumbs->push('Registers', route('app.registers.samples.index'));
+});
+
 // Home > Registers > Samples > 
 #################################################################################
 Breadcrumbs::register('app.registers.samples.index', function ($breadcrumbs) {

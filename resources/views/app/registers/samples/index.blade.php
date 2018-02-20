@@ -11,9 +11,10 @@
               <a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">
                 Create a new Record
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
+              <h2>
+                <i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
                 <small>
-                  Modals are streamlined, but flexible, dialog prompts with the minimum required functionality and smart defaults.
+                  Create, read, update and delete samples from this screen.
                 </small>
               </h2>
             </div>

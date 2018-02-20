@@ -114,9 +114,9 @@ class SamplesController extends Controller
     public function create()
     {
 
-        if (! Gate::allows('sample_add')) {
-          return abort(401);
-        }
+        // if (! Gate::allows('sample_add')) {
+        //   return abort(401);
+        // }
 
         return view('app.registers.samples.create');
     }

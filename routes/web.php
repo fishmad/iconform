@@ -14,6 +14,12 @@ Route::get('app', 'Dashboards\\DashboardController@index')->name('app');
 Route::get('app/dashboard', 'Dashboards\\DashboardController@index')->name('dashboard');
 // Route::view('app/dashboard', 'app.dashboard.index')->name('dashboard');
 
+/* Settings - vendor routes requiring auth protection */
+Route::middleware('auth')->group(function() {
+  Route::get('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator'])->name('getCrud');
+  Route::post('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator'])->name('postCrud');
+});
+
 /* Settings */
 Route::view('app/settings', 'app.settings.default')->name('app.settings.default'); // Required
 Route::namespace('Settings')->prefix('app/settings')->name('app.settings.')->group(function () {
@@ -22,13 +28,8 @@ Route::namespace('Settings')->prefix('app/settings')->name('app.settings.')->gro
   Route::resource('permissions', 'PermissionController');
 });
 
-/* Settings - vendor routes requiring auth protection */
-Route::middleware('auth')->group(function() {
-  Route::get('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator'])->name('getCrud');
-  Route::post('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator'])->name('postCrud');
-});
-
 /* Registers */
+Route::view('app/registers', 'app.registers.default')->name('app.registers.default'); // Require
 Route::namespace('Registers')->prefix('app/registers')->name('app.registers.')->group(function () {
   Route::get('samples/datatables', 'SamplesController@datatables');
   Route::resource('samples', 'SamplesController');

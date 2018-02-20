@@ -6,6 +6,9 @@
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> CoreUI Demo</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/demo/all"><i class="icon-puzzle"></i> Dashboard</a>
+              </li>
+              <li class="nav-item">
                 <a target="_blank" class="nav-link" href="/demo/buttons"><i class="icon-puzzle"></i> Buttons</a>
               </li>
               <li class="nav-item">

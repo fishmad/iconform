@@ -9,7 +9,7 @@
             <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
               <h2><i class="fa fa-align-justify"></i> <strong>Viewing</strong> {{ $sample->title }} 
                 <small>
-                    {{ $sample->title }}
+                   {{ $sample->title }}
                 </small>
               </h2>
             </div>
