@@ -47,19 +47,26 @@ class UserController extends Controller
     public function show($id)
     {
 
-        //$roles = Role::get();
-        $roles = User::roles()->get();
 
-        $permissions = $roles->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+      // $role = Role::findOrFail($id);
+      // $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+      // $users = User::role($role)->get();
+
+      $role = Role::get();
+        $user = User::findOrFail($id);
+        $permissions = $role->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+        //$roles = Role::get();
+
+
+        //$roles = User::roles()->get();
+        //$permissions = $roles->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
         //$permissions = Permission::find($id);
         //$users = User::role($role)->get();
-
         //$permissions User::role($role)->Permission::($permissions)get();
-        dd($permissions);
-
-
-
-        $roles = Role::get();
+        
+        // $permissions = User::with('roles.permissions')->get();
+        
+        //dd($permissions);
 
         return view('app.settings.users.show', compact('user', 'permissions', 'roles'));
 
