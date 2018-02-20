@@ -46,11 +46,22 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        // return redirect('users');
 
-        $user = User::findOrFail($id);
-			
-        return view('app.settings.users.show', compact('user'));
+        //$roles = Role::get();
+        $roles = User::roles()->get();
+
+        $permissions = $roles->permissions()->orderBy('item_order', 'asc')->get()->groupBy('groupings');
+        //$permissions = Permission::find($id);
+        //$users = User::role($role)->get();
+
+        //$permissions User::role($role)->Permission::($permissions)get();
+        dd($permissions);
+
+
+
+        $roles = Role::get();
+
+        return view('app.settings.users.show', compact('user', 'permissions', 'roles'));
 
     }
 
