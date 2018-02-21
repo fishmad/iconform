@@ -119,29 +119,30 @@ Breadcrumbs::register('app.settings.permissions.edit', function ($breadcrumbs, $
 #################################################################################
 
 // Home > Registers
-Breadcrumbs::register('app.registers', function ($breadcrumbs) {
-  $breadcrumbs->push('Registers', route('app.registers.samples.index'));
+Breadcrumbs::register('app.registers.default', function ($breadcrumbs) {
+  $breadcrumbs->parent('home');
+  $breadcrumbs->push('Registers', route('app.registers.default'));
 });
 
 // Home > Registers > Samples > 
 #################################################################################
 Breadcrumbs::register('app.registers.samples.index', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.registers.index');
+  $breadcrumbs->parent('app.registers.default');
   $breadcrumbs->push('Samples', route('app.registers.samples.index'));
 });
 // Home > Registers > Samples > Create
 Breadcrumbs::register('app.registers.samples.create', function ($breadcrumbs) {
   $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Create Sample', route('app.registers.samples.create'));
+  $breadcrumbs->push('Create', route('app.registers.samples.create'));
 });
 // Home > Registers > Samples > Show
-Breadcrumbs::register('app.registers.samples.show', function ($breadcrumbs) {
+Breadcrumbs::register('app.registers.samples.show', function ($breadcrumbs, $sample) {
   $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Show Sample', route('app.registers.samples.show'));
+  $breadcrumbs->push('Show', route('app.registers.samples.show', $sample));
 });
 // Home > Registers > Samples > Edit
 Breadcrumbs::register('app.registers.samples.edit', function ($breadcrumbs, $sample) {
   $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Edit Sample ' . $sample, route('app.registers.samples.edit', $sample));
+  $breadcrumbs->push('Edit', route('app.registers.samples.edit', $sample));
 });
 #################################################################################

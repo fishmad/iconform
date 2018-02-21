@@ -54,25 +54,6 @@
                 </div>
               </div>
 
-              {{--  <hr />
-
-              <div class="form-group row {{ $errors->has('role') ? 'has-error' : ''}}">
-                {!! Form::label('role', 'Roles', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
-                <div class="col-md-9 col-lg-8">
-                @if(!$roles->isEmpty())
-                  @foreach ($roles as $role) 
-                  <div class="checkbox">
-                    <label>
-                      {{ Form::checkbox('roles[]', $role->id, $user->roles) }}
-                      {{ ucfirst($role->name) }}
-                    </label>
-                  </div>
-                  @endforeach
-                @endif
-                </div>
-              </div>  --}}
-
-
               <hr>
 
               <div class="form-group row">
@@ -90,8 +71,6 @@
 @endif
                 </div><!-- /.col-md-9.col-lg-8 -->
               </div><!-- /.form-group row -->
-
-
 
               <hr />
 

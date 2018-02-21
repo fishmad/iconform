@@ -1,11 +1,11 @@
 <?php
 
 
-// Route::resource('/', 'Frontend\\FrontendController');
-// Route::view('/', 'frontend.default')->name('welcome');
-Route::view('about', 'frontend.pages.about')->name('about');
-Route::view('contact', 'frontend.pages.contact')->name('contact');
-Route::view('faq', 'frontend.pages.faq')->name('faq');
+Route::middleware('auth')->group(function() {
+  Route::view('about', 'frontend.pages.about')->name('about');
+  Route::view('contact', 'frontend.pages.contact')->name('contact');
+  Route::view('faq', 'frontend.pages.faq')->name('faq');
+});
 
 Auth::routes();
 

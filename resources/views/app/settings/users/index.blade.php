@@ -24,7 +24,6 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {{--  <th>Date/Time Added</th>  --}}
                     <th>Roles</th>
                     <th class="text-right">Actions</th>
                   </tr>
@@ -35,7 +34,6 @@
                     <td>{{ $loop->iteration or $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
-                    {{--  <td>{{ $item->created_at->format('F d, Y h:ia') }}</td>  --}}
                     <td>
 @foreach($item->roles()->pluck('name') as $roles )
                       <span class="badge badge-info">{{ $roles }}</span>
@@ -51,19 +49,18 @@
                           'url' => ['/app/settings/users', $item->id],
                           'style' => 'display:inline'
                       ]) !!}
-                          {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                          'type' => 'submit',
-                          'class' => 'btn btn-danger btn-sm',
-                          'title' => 'Delete User',
-                          'onclick'=>'confirmDel()'
-                          )) !!}
+                      {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+                      'type' => 'submit',
+                      'class' => 'btn btn-danger btn-sm',
+                      'title' => 'Delete User',
+                      'onclick'=>'confirmDel()'
+                      )) !!}
                       {!! Form::close() !!}
                     </td>
                   </tr>
 @endforeach
                 </tbody>
               </table>
-              {{--<div class="pagination-wrapper"> {!! $users->appends(['search' => Request::get('search')])->render() !!} </div>--}}
             </div><!-- ./card-body-->
 
             <div class="card-footer">

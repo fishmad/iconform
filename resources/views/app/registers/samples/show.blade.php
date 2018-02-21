@@ -6,32 +6,18 @@
         <div class="animate fadeIn">
           <div class="card">
 
-            <div class="card-header"><a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">Create a new Record</a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Viewing</strong> {{ $sample->title }} 
+            <div class="card-header">
+              <a href="{{ route('app.registers.samples.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
+                <i class="fa fa-arrow-left"></i> Back
+              </a>
+              <h2><i class="fa fa-align-justify"></i> <strong>Show</strong> Sample 
                 <small>
-                   {{ $sample->title }}
+                  {{ $sample->title }}
                 </small>
               </h2>
-            </div>
+            </div><!-- ./card-header-->
 
             <div class="card-body">
-
-              <a href="{{ route('app.registers.samples.index') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-              <a href="{{ route('app.registers.samples.edit', $sample->id) }}" title="Edit Sample"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-              {!! Form::open([
-                'method'=>'DELETE',
-                'url' => ['app/registers/samples', $sample->id],
-                'style' => 'display:inline'
-              ]) !!}
-              {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                'type' => 'submit',
-                'class' => 'btn btn-danger btn-xs',
-                'title' => 'Delete Sample',
-                'onclick'=>'return confirm("Confirm delete?")'
-              ))!!}
-              {!! Form::close() !!}
-              <br/>
-              <br/>
 
               <div class="table-responsive">
                 <table class="table table-borderless">
@@ -54,8 +40,15 @@
                   </tbody>
                 </table>
               </div><!-- /.table-responsive -->
-            </div><!-- /.card-body -->
-          </div><!-- /.card -->
-        </div><!-- /.animate.fadeIn -->
-      </div><!-- /.container-fluid -->
+
+            </div><!-- ./card-body-->
+
+            <div class="card-footer">
+              Sample info
+            </div>
+
+          </div><!-- ./card-->
+        </div><!-- ./animate fadeIn-->
+      </div><!-- ./container-fluid-->
+
 @endsection

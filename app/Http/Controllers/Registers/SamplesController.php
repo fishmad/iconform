@@ -31,7 +31,7 @@ class SamplesController extends Controller
     public function index(Request $request)
     {
 
-        if (! Gate::allows('sample_browse')) {
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
           return abort(401);
         }
 
@@ -41,30 +41,29 @@ class SamplesController extends Controller
     }
 
 
-  public function datatables()
-  {
-    // $samples = Sample::select(['id', 'title', 'email', 'description', 'updated_at']);
-    $samples = Sample::all();
-    return Datatables::of($samples)
+    public function datatables()
+    {
 
-    // ->addColumn('action', function ($sample) {
-    //     $btns    = '<a href="' . route('app.registers.samples.show', $sample->id) . '" title="View" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-search-plus"></i></a> ';
-    //     $btns   .= '<a href="' . route('app.registers.samples.edit', $sample->id) . '" title="Edit" class="btn btn-success btn-sm"><i class="fa fa-fw fa-edit"></i></a> ';
-    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="/registers/samples/' . $sample->id . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
-    //     $btns   .= '<button class="btn btn-danger btn-sm btn-delete" data-remote="' . route('app.registers.samples.destroy', $sample->id) . '"><i class="fa fa-fw fa-trash-o" aria-hidden="true"></i></button>';
-    //   return $btns;
-    // })
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
+          return abort(401);
+        }
 
-    ->editColumn('title', function($samples) {
-      $url = route('app.registers.samples.show', $samples->id);
-      return '<a href="' . $url . '">' . $samples->title . '</a>';
-    })
-    ->rawColumns(['title', 'action'])
-    ->addColumn('action', function ($samples) {
-      return view('app.registers.samples.datatables.action', compact('samples'))->render();
-    })
-    ->make(true);
-  }
+        // $samples = Sample::select(['id', 'title', 'email', 'description', 'updated_at']);
+        $samples = Sample::all();
+
+        return Datatables::of($samples)
+
+        ->editColumn('title', function($samples) {
+          $url = route('app.registers.samples.show', $samples->id);
+          return '<a href="' . $url . '">' . $samples->title . '</a>';
+        })
+        ->rawColumns(['title', 'action'])
+        ->addColumn('action', function ($samples) {
+          return view('app.registers.samples.datatables.action', compact('samples'))->render();
+        })
+        ->make(true);
+    }
+
 
     /**
      * Display the specified resource.
@@ -76,9 +75,9 @@ class SamplesController extends Controller
     public function show($id)
     {
 
-      // if (! Gate::allows('sample_read')) {
-      //    return abort(401);
-      // }
+      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_read_show'))) {
+        return abort(401);
+      }
 
       $sample = Sample::findOrFail($id);
 
@@ -96,9 +95,9 @@ class SamplesController extends Controller
     public function edit($id)
     {
 
-        if (! Gate::allows('sample_edit')) {
-            return abort(401);
-        }
+      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_edit_update'))) {
+        return abort(401);
+      }
 
         $sample = Sample::findOrFail($id);
 
@@ -114,9 +113,9 @@ class SamplesController extends Controller
     public function create()
     {
 
-        // if (! Gate::allows('sample_add')) {
-        //   return abort(401);
-        // }
+      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
+        return abort(401);
+      }
 
         return view('app.registers.samples.create');
     }
@@ -132,9 +131,9 @@ class SamplesController extends Controller
     public function destroy($id)
     {
 
-        if (! Gate::allows('sample_delete')) {
-          return abort(401);
-        }
+      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_delete_destroy'))) {
+        return abort(401);
+      }
 
         Sample::destroy($id);
 
@@ -152,9 +151,9 @@ class SamplesController extends Controller
     public function store(Request $request)
     {
 
-        if (! Gate::allows('sample_edit')) {
-          return abort(401);
-        }
+      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
+        return abort(401);
+      }
 
         $this->validate($request, [
 			    'title' => 'required'
@@ -179,12 +178,12 @@ class SamplesController extends Controller
     public function update(Request $request, $id)
     {
 
-        if (! Gate::allows('sample_edit')) {
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
           return abort(401);
         }
 
         $this->validate($request, [
-			    'title' => 'required'
+          'title' => 'required'
         ]);
         
         $requestData = $request->all();

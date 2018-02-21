@@ -131,7 +131,7 @@
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-              Permission details
+              Permission info
             </div>
 
           </div><!-- ./card-->

@@ -27,7 +27,8 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('app.settings.users.index')->with('users', $users);
+        //return view('app.settings.users.index')->with('users', $users);
+        return view('app.settings.users.index', compact('users'));
 
     }
 
@@ -43,8 +44,8 @@ class UserController extends Controller
     {
 
         $user = User::findOrFail($id);
-        $permissions = $user->getAllPermissions()->groupBy('groupings');
         $roles = $user->getRoleNames(); // Returns a collection
+        $permissions = $user->getAllPermissions()->groupBy('groupings');
 
         return view('app.settings.users.show', compact('user', 'permissions', 'roles'));
 
@@ -120,10 +121,10 @@ class UserController extends Controller
         if (isset($roles)) {
 
             foreach ($roles as $role) {
-            $role_r = Role::where('id', '=', $role)->firstOrFail();            
+            $role_r = Role::where('id', '=', $role)->firstOrFail();
             $user->assignRole($role_r);
             }
-        }        
+        }
 
         return redirect('app/settings/users')->with('flash_message','User successfully added.');
     }
@@ -156,7 +157,7 @@ class UserController extends Controller
             $user->fill($input)->save(); // Password has been changed, save all fields except the roles
         }
         
-        if (isset($roles)) { // Have the roles been changed?      
+        if (isset($roles)) { // Have the roles been changed?
             $user->roles()->sync($roles);  // Sync any newley ticked roles[x] as $roles data - update the reference table: role_has_permissions         
         } else {
             $user->roles()->detach(); // Remove any unticked roles[o] references in table: role_has_permissions 

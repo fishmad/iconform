@@ -10,12 +10,12 @@
               <a href="{{ route('app.registers.samples.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
                 <i class="fa fa-arrow-left"></i> Back
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Editing </strong> {{ $sample->title }} 
+              <h2><i class="fa fa-align-justify"></i> <strong>Edit</strong> Sample
                 <small>
                   {{ $sample->title }}
                 </small>
               </h2>
-            </div>
+            </div><!-- ./card-header-->
 
             <div class="card-body">
 
@@ -38,8 +38,14 @@
 
               {!! Form::close() !!}
 
-            </div><!-- /.card-body -->
-          </div><!-- /.card -->
-        </div><!-- /.animate.fadeIn -->
-      </div><!-- /.container-fluid -->
+            </div><!-- ./card-body-->
+
+            <div class="card-footer">
+              Sample edit form
+            </div>
+
+          </div><!-- ./card-->
+        </div><!-- ./animate fadeIn-->
+      </div><!-- ./container-fluid-->
+
 @endsection

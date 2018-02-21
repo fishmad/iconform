@@ -103,9 +103,9 @@ class PermissionController extends Controller
 
         return redirect('app/settings/permissions')->with('flash_message','Deleted permission: ' . $permission->name);
     }
-		
-		
-		    /**
+
+
+      /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

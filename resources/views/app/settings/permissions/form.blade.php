@@ -60,7 +60,7 @@
 
           <div class="row">
             <div class="offset-md-2 col-md-4">
-              {{ Form::button('<i class="fa fa-dot-circle-o"></i> Create Permission', ['type' => 'submit', 'class' => 'btn btn-primary'] ) }}
+              {{ Form::button('<i class="fa fa-dot-circle-o"></i> Update Permission', ['type' => 'submit', 'class' => 'btn btn-primary'] ) }}
               <a href="{{ route('app.settings.permissions.index') }}" class="btn btn-danger" title="Back"><i class="fa fa-ban"></i> Cancel</a>
             </div>
           </div>
