@@ -94,10 +94,10 @@ class PermissionController extends Controller
     {
         $permission = Permission::findOrFail($id);
         
-        if ($permission->name == "Administer roles & permissions") {
-            return redirect('app/settings/permissions')->with('flash_danger','WARNING This system requires the permission "' . $permission->name . '" to function correctly. You cannot delete this!');
-						// return abort(401);
-        }
+        // if ($permission->name == "Administer roles & permissions") {
+        //     return redirect('app/settings/permissions')->with('flash_danger','WARNING This system requires the permission "' . $permission->name . '" to function correctly. You cannot delete this!');
+				// 		// return abort(401);
+        // }
         
         $permission->delete();
 

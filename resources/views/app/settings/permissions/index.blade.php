@@ -43,15 +43,11 @@
                   <td class="text-right">
                     <a href="{{ url('/app/settings/permissions/' . $item->id) }}" title="View Permission"><button class="btn btn-success btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                     <a href="{{ url('/app/settings/permissions/' . $item->id . '/edit') }}" title="Edit Permission"><button class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                    {!! Form::open([
-                      'method'=>'DELETE',
-                      'url' => ['/app/settings/permissions', $item->id],
-                      'style' => 'display:inline'
-                    ]) !!}
+                    {!! Form::open(['method'=> 'DELETE', 'url' => ['/app/settings/permissions', $item->id], 'style' => 'display:inline']) !!}
                     {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
                       'type' => 'submit',
                       'class' => 'btn btn-danger btn-sm',
-                      'title' => 'Delete Sample',
+                      'title' => 'Delete Permission',
                       'onclick'=>'confirmDel()'
                     )) !!}
                     {!! Form::close() !!}

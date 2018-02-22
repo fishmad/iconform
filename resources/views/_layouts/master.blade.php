@@ -24,7 +24,7 @@
     @include('_partials.coreui.sidebar')
 
     <main class="main">
-      {{--  @include('_partials.coreui.breadcrumbsbody')  --}}
+      {{--  @include('_partials.coreui.breadcrumbs.body')  --}}
 
       @include('_partials.alerts')
 
