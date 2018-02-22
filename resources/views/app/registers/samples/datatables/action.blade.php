@@ -8,17 +8,11 @@
 {{--  <button class="btn btn-danger btn-sm btn-delete" data-remote="{{ route('app.registers.samples.destroy', $samples->id) }}">
 <i class="fa fa-fw fa-trash-o" aria-hidden="true"></i>  --}}
 
-
-{!! Form::open([
-  'method'=>'DELETE',
-  'url' => ['app/registers/samples', $samples->id],
-  'style' => 'display:inline'
-]) !!}
+{!! Form::open([ 'method'=>'DELETE', 'url' => ['app/registers/samples', $samples->id], 'style' => 'display:inline']) !!}
 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i>', array(
   'type' => 'submit',
   'class' => 'btn btn-danger btn-sm',
   'title' => 'Delete Sample',
-  {{--  'onclick'=>'return confirm("Confirm delete?")'  --}}
   'onclick'=>'confirmDel()'
 ))!!}
 {!! Form::close() !!}
