@@ -106,7 +106,7 @@
             </div><!-- /.card-body -->
 
             <div class="card-footer">
-              Add permission form
+              Create permission form
             </div>
 
           </div><!-- ./card-->

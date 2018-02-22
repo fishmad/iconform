@@ -33,11 +33,20 @@ Permission belongs in groupings
 Groupings_order				1
 Groupings							Samples
 
-Permission Action			browse|read|edit|add|delete|all
-Permission Label			Browse
-Permission Name				samples_browse
+Permission Actions			
+all|browse|read|edit|add|delete
 
+Permission Label (visual only - can be anything descriptive)
+------------------------------
+samples.all
+samples.browse.list
+samples.read.show
+samples.edit.update
+samples.add.create
+samples.delete.destroy
 
+Permission Name (Used on Controller Methods)
+------------------------------
 samples_all
 samples_browse_list
 samples_read_show

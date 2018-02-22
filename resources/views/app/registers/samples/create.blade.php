@@ -7,13 +7,15 @@
           <div class="card">
 
             <div class="card-header">
-              <a href="{{ route('app.registers.samples.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right"><i class="fa fa-step-backward fa-md"></i> Go Back</a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Create</strong> Samples 
+              <a href="{{ route('app.registers.samples.index') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
+                <i class="fa fa-arrow-left"></i> Back
+              </a>
+              <h2><i class="fa fa-align-justify"></i> <strong>Create</strong> Sample
                 <small>
                   To add a new sample record, complete the form details below and press submit to save your data.
                 </small>
               </h2>
-            </div>
+            </div><!-- ./card-header-->
 
             <div class="card-body">
 
@@ -26,7 +28,7 @@
               @endif
 
               {!! Form::open([
-                'url' => '/registers/samples', 
+                'url' => '/app/registers/samples', 
                 'class' => 'form-horizontal', 
                 'files' => true
               ]) !!}
@@ -37,7 +39,7 @@
 
             </div><!-- /.card-body -->
 
-            <div class="card-footer">Samples form
+            <div class="card-footer">Create sample form
             </div>
             
           </div><!-- /.card -->

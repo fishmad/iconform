@@ -14,12 +14,13 @@ class RoleSeed extends Seeder
     {
         $role = Role::create(['name' => 'administrator']);
         $role->givePermissionTo('Administer roles & permissions');
-				$role->givePermissionTo('sample_browse');
-				$role->givePermissionTo('sample_read');
-				$role->givePermissionTo('sample_edit');
-				$role->givePermissionTo('sample_add');
-				$role->givePermissionTo('sample_delete');
-				
+				$role->givePermissionTo('samples_all');
+				$role->givePermissionTo('samples_browse_list');
+				$role->givePermissionTo('samples_read_show');
+				$role->givePermissionTo('samples_edit_update');
+				$role->givePermissionTo('samples_add_create');
+        $role->givePermissionTo('samples_delete_destroy');
+        
         $role = Role::create(['name' => 'guest']);
         $role->givePermissionTo('frontend_reader');
     }

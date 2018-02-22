@@ -36,9 +36,11 @@
                 <tbody>
                 </tbody>
               </table>
+
             </div><!-- ./card-body-->
           </div><!-- ./card-->
         </div><!-- ./animate fadeIn-->
+
       </div><!-- ./container || container-fluid-->
 @endsection
 
@@ -115,7 +117,7 @@
     });	
   </script>
 
-  <script>
+  {{--  <script>
     $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
       e.preventDefault();
       $.ajaxSetup({
@@ -137,12 +139,15 @@
       } else
         alert("You have cancelled!");
     });
-  </script>
+  </script>  --}}
 
   <script type="text/javascript" src="{{ asset('js/iconform/sweetalert.js') }}"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.11/sweetalert2.all.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/sweetalert2"></script>
+  <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  {{--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.11/sweetalert2.all.js"></script>  --}}
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  {{--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>  --}}
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
