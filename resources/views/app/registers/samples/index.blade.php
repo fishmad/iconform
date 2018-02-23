@@ -132,7 +132,7 @@
           url: url,
           type: 'DELETE',
           dataType: 'json',
-          data: {method: '_DELETE', submit: true}
+          data: {method: 'DELETE', submit: true}
         }).always(function (data) {
           $('#datatable').DataTable().draw();
         });
@@ -141,13 +141,118 @@
     });
   </script>  --}}
 
+<script>
+  $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
+    e.preventDefault();
+    // $.ajaxSetup({
+    //   headers: {
+    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //   }
+    // });
+    // var url = $(this).data('remote');
+    // confirm then
+    if (confirm('Are you sure you want to delete this?')) {
+      // $.ajax({
+      //   url: url,
+      //   type: 'DELETE',
+      //   dataType: 'json',
+      //   data: {method: 'DELETE', submit: true}
+      // }).always(function (data) {
+      //   $('#datatable').DataTable().draw();
+      // });
+    } else
+      alert("You have cancelled!");
+  });
+</script>
+
+
+
+
+<script>
+  function ConfirmDelete(){
+  return confirm('Are you sure?');
+  }
+  </script>
+
+
+  {{--  <script>
+  function confirmDel() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+      swal({
+        title: 'Are you sure?',
+        text: "You will not be able to restore this record.",
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          swal(
+            'The record is now being deleted.',
+            'success'
+          ),
+          form.submit();
+        // } else {
+        //   swal(
+        //     'Canceled!',
+        //     'The record was not deleted.',
+        //     'error'
+        //   )
+        }
+      })
+    }
+  </script>  --}}
+
+
+
+
+
+
+
+  {{--  <script>
+    $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
+      e.preventDefault();
+
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      var url = $(this).data('remote');
+
+      swal({
+        title: 'Are you sure?',
+        text: "You will not be able to restore this record.",
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+
+      $.ajax({
+        url: url,
+        type: 'DELETE',
+        dataType: 'json',
+        data: {method: '_DELETE', submit: true}
+      }).always(function (data) {
+        $('#datatable').DataTable().draw();
+      });
+    });   
+  </script>  --}}
+
+
+
+
+
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.js"></script>
 
+  
   {{--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.12.11/sweetalert2.all.js"></script>  --}}
-  <script type="text/javascript" src="{{ asset('js/iconform/sweetalert.js') }}"></script>
   <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.12.12/dist/sweetalert2.all.js"></script>
   <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>

@@ -59,7 +59,7 @@ class SamplesController extends Controller
         })
         ->rawColumns(['title', 'action'])
         ->addColumn('action', function ($samples) {
-          return view('app.registers.samples.datatables.action', compact('samples'))->render();
+          return view('app.registers.samples.datatables.buttons', compact('samples'))->render();
         })
         ->make(true);
     }
