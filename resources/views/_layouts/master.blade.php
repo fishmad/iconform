@@ -26,7 +26,7 @@
     <main class="main">
       {{--  @include('_partials.coreui.breadcrumbs.body')  --}}
 
-      @include('_partials.alerts')
+      @include('_partials.flash-alerts')
 
       <!-- Content -->
       @yield('content')
@@ -49,6 +49,15 @@
   <!-- Default: CoreUI main scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
+
+  <!-- Autohide/dismiss BS4 Alerts after given time -->
+  <script>
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove(); 
+      });
+    }, 4000);
+  </script>
 
   </body>
 </html>

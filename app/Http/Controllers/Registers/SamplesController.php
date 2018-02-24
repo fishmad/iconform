@@ -134,10 +134,10 @@ class SamplesController extends Controller
       if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_delete_destroy'))) {
         return abort(401);
       }
-
+      $sample = Sample::findOrFail($id);
         Sample::destroy($id);
 
-        return redirect('app/registers/samples')->with('flash_message', 'Sample deleted!');
+        return redirect('app/registers/samples')->with('success', 'Deleted! sample with email: ' . $sample->email);
     }
 
 
@@ -163,7 +163,7 @@ class SamplesController extends Controller
         
         Sample::create($requestData);
 
-        return redirect('app/registers/samples')->with('flash_message', 'Sample added!');
+        return redirect('app/registers/samples')->with('success', 'Sample added!');
     }
 
 
@@ -187,11 +187,14 @@ class SamplesController extends Controller
         ]);
         
         $requestData = $request->all();
-        
+
         $sample = Sample::findOrFail($id);
+
         $sample->update($requestData);
 
-        return redirect('app/registers/samples')->with('flash_message', 'Sample updated!');
+     // return redirect('app/registers/samples')->with('success', 'Success! sample ' . $sample->title . ' was updated!');
+     // return redirect('app/registers/samples')->withSuccess('Success! sample ' . $sample->title . ' was updated!');
+        return redirect(route('app.registers.samples.index'))->withSuccess('sample ' . $sample->title . ' was updated!');
     }
 
 

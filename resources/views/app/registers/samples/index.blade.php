@@ -21,7 +21,7 @@
 
             <div class="card-body">
 
-              <table id="datatable" class="table table-responsive-sm" cellspacing="0" width="100%">
+              <table id="datatable" data-toggle="dataTable" data-form="deleteForm" class="table table-responsive-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
 @foreach ($dbFields as $dbField => $name)
@@ -59,25 +59,11 @@
         lengthMenu: [[5, 10, 25, 50, 100, 500, -1], [5, 10, 25, 50, 100, 500, "All"]],
         {{--  pagingType: "simple_numbers",  --}}
         pagingType: "numbers",
-
         dom:
           "<'row'<'col-sm-12 col-md-4'B><'col-sm-12 col-md-4 text-center'l><'col-sm-12 col-md-4'f>>" +
           "<'row'<'col-sm-12'tr>>" +
           "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-
         buttons: [
-          {{--  {
-            "text": '<i class="fa fa-plus-square-o"></i> New Record',
-            "className": 'btn-outline-primary btn-sm',
-              action: function ( e, dt, node, config ) {
-                window.location = '/registers/samples/create';
-              },
-          },  --}}
-          {{--  { 
-            "extend": 'copy', 
-            "text":'<i class="fa fa-copy"></i> Copy',
-            "className": 'btn-outline-primary btn-sm'
-          },  --}}
           { 
             "extend": 'excel', 
             "text":'<i class="fa fa-file-excel-o"></i> Excel',
@@ -99,23 +85,85 @@
             "className": 'btn-outline-primary btn-sm'
           }
         ],
-
         ajax: '{!! url('app/registers/samples/datatables') !!}',
         columns: [
-@foreach ($dbFields as $dbField => $name)
-@if ($name === "created_at" || $name === "updated_at" || $name === "id" || $name === "description" || $name === "image" )
-@else
-          { data: '{!! $name !!}', name: '{!! $name !!}' },
-@endif
-@endforeach
+          @foreach ($dbFields as $dbField => $name)
+            @if ($name === "created_at" || $name === "updated_at" || $name === "id" || $name === "description" || $name === "image" )
+            @else
+              { data: '{!! $name !!}', name: '{!! $name !!}' },
+            @endif
+          @endforeach
           { data: 'action', name: 'action', orderable: false, searchable: false }
         ],
-
         order: [[0, 'asc']],
-
       });
     });	
   </script>
+
+
+
+{{--  
+  <script>
+    $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
+    var x = confirm("Are you sure you want to delete?"); 
+    if (x)
+      return true;
+    else
+      return false;
+    })
+  </script>
+  --}}
+
+<script>
+  $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
+  //var x = confirm("Are you sure you want to delete?");
+
+   var x = swal({
+        title: 'Are you sure?',
+        text: "You will not be able to restore this record.",
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+
+  if (x)
+    return true;
+  else
+    return false;
+  })
+
+</script>
+
+  <script>
+  function confirmDel() {
+    event.preventDefault(); // prevent form submit
+    var form = event.target.form; // storing the form
+      swal({
+        title: 'Are you sure?',
+        text: "You will not be able to restore this record.",
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          swal(
+            'The record is now being deleted.',
+            'success'
+          ),
+          form.submit();
+        } else {
+          swal(
+            'Canceled!',
+            'The record was not deleted.',
+            'error'
+          )
+        }
+      })
+    }
+  </script>
+
 
   {{--  <script>
     $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
@@ -140,110 +188,6 @@
         alert("You have cancelled!");
     });
   </script>  --}}
-
-<script>
-  $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
-    e.preventDefault();
-    // $.ajaxSetup({
-    //   headers: {
-    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //   }
-    // });
-    // var url = $(this).data('remote');
-    // confirm then
-    if (confirm('Are you sure you want to delete this?')) {
-      // $.ajax({
-      //   url: url,
-      //   type: 'DELETE',
-      //   dataType: 'json',
-      //   data: {method: 'DELETE', submit: true}
-      // }).always(function (data) {
-      //   $('#datatable').DataTable().draw();
-      // });
-    } else
-      alert("You have cancelled!");
-  });
-</script>
-
-
-
-
-<script>
-  function ConfirmDelete(){
-  return confirm('Are you sure?');
-  }
-  </script>
-
-
-  {{--  <script>
-  function confirmDel() {
-    event.preventDefault(); // prevent form submit
-    var form = event.target.form; // storing the form
-      swal({
-        title: 'Are you sure?',
-        text: "You will not be able to restore this record.",
-        type: 'warning',
-        showCancelButton: true,
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.value) {
-          swal(
-            'The record is now being deleted.',
-            'success'
-          ),
-          form.submit();
-        // } else {
-        //   swal(
-        //     'Canceled!',
-        //     'The record was not deleted.',
-        //     'error'
-        //   )
-        }
-      })
-    }
-  </script>  --}}
-
-
-
-
-
-
-
-  {{--  <script>
-    $('#datatable').on('click', '.btn-delete[data-remote]', function (e) { 
-      e.preventDefault();
-
-      $.ajaxSetup({
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-
-      var url = $(this).data('remote');
-
-      swal({
-        title: 'Are you sure?',
-        text: "You will not be able to restore this record.",
-        type: 'warning',
-        showCancelButton: true,
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      });
-
-      $.ajax({
-        url: url,
-        type: 'DELETE',
-        dataType: 'json',
-        data: {method: '_DELETE', submit: true}
-      }).always(function (data) {
-        $('#datatable').DataTable().draw();
-      });
-    });   
-  </script>  --}}
-
-
-
 
 
 

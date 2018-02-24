@@ -34,7 +34,7 @@
                 'files' => true
               ]) !!}
 
-              @include ('app.registers.samples.form', ['submitButtonText' => 'Update'])
+              @include ('app.registers.samples.form', ['submitButtonText' => 'Update Sample'])
 
               {!! Form::close() !!}
 
