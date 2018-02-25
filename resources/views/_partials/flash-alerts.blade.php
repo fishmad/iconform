@@ -1,4 +1,4 @@
-      <!-- Alerts -->
+      <!-- Alerts: Flash -->
 @if ($message = Session::get('success'))
       <div class="container-fluid">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -49,4 +49,4 @@
         </div>
       </div>
 @endif
-      <!-- /Alerts -->
+      <!-- /Alerts: Flash -->

@@ -30,7 +30,6 @@ class SamplesController extends Controller
      */
     public function index(Request $request)
     {
-
         if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
           return abort(401);
         }
@@ -43,7 +42,6 @@ class SamplesController extends Controller
 
     public function datatables()
     {
-
         if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
           return abort(401);
         }
@@ -53,13 +51,13 @@ class SamplesController extends Controller
 
         return Datatables::of($samples)
 
-        ->editColumn('title', function($samples) {
-          $url = route('app.registers.samples.show', $samples->id);
-          return '<a href="' . $url . '">' . $samples->title . '</a>';
-        })
+        // ->editColumn('title', function($samples) {
+        //   $url = route('app.registers.samples.show', $samples->id);
+        //   return '<a href="' . $url . '">' . $samples->title . '</a>';
+        // })
         ->rawColumns(['title', 'action'])
         ->addColumn('action', function ($samples) {
-          return view('app.registers.samples.datatables.buttons', compact('samples'))->render();
+          return view('app.registers.samples.includes.actionButtons', compact('samples'))->render();
         })
         ->make(true);
     }
@@ -74,14 +72,12 @@ class SamplesController extends Controller
      */
     public function show($id)
     {
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_read_show'))) {
+          return abort(401);
+        }
+        $sample = Sample::findOrFail($id);
 
-      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_read_show'))) {
-        return abort(401);
-      }
-
-      $sample = Sample::findOrFail($id);
-
-      return view('app.registers.samples.show', compact('sample'));
+        return view('app.registers.samples.show', compact('sample'));
     }
 
 
@@ -94,11 +90,9 @@ class SamplesController extends Controller
      */
     public function edit($id)
     {
-
-      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_edit_update'))) {
-        return abort(401);
-      }
-
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_edit_update'))) {
+          return abort(401);
+        }
         $sample = Sample::findOrFail($id);
 
         return view('app.registers.samples.edit', compact('sample'));
@@ -112,11 +106,9 @@ class SamplesController extends Controller
      */
     public function create()
     {
-
-      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
-        return abort(401);
-      }
-
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
+          return abort(401);
+        }
         return view('app.registers.samples.create');
     }
 
@@ -130,11 +122,11 @@ class SamplesController extends Controller
      */
     public function destroy($id)
     {
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_delete_destroy'))) {
+          return abort(401);
+        }
 
-      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_delete_destroy'))) {
-        return abort(401);
-      }
-      $sample = Sample::findOrFail($id);
+        $sample = Sample::findOrFail($id);
         Sample::destroy($id);
 
         return redirect('app/registers/samples')->with('success', 'Deleted! sample with email: ' . $sample->email);
@@ -150,17 +142,14 @@ class SamplesController extends Controller
      */
     public function store(Request $request)
     {
-
-      if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
-        return abort(401);
-      }
-
+        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
+          return abort(401);
+        }
         $this->validate($request, [
-			    'title' => 'required'
+          'title' => 'required'
         ]);
 
         $requestData = $request->all();
-        
         Sample::create($requestData);
 
         return redirect('app/registers/samples')->with('success', 'Sample added!');
@@ -177,7 +166,6 @@ class SamplesController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_add_create'))) {
           return abort(401);
         }
@@ -187,13 +175,9 @@ class SamplesController extends Controller
         ]);
         
         $requestData = $request->all();
-
         $sample = Sample::findOrFail($id);
-
         $sample->update($requestData);
 
-     // return redirect('app/registers/samples')->with('success', 'Success! sample ' . $sample->title . ' was updated!');
-     // return redirect('app/registers/samples')->withSuccess('Success! sample ' . $sample->title . ' was updated!');
         return redirect(route('app.registers.samples.index'))->withSuccess('sample ' . $sample->title . ' was updated!');
     }
 

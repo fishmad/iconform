@@ -7,14 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    {{--  <ul class="nav navbar-nav d-md-down-none">
-      <li class="nav-item px-3">
-        <a class="nav-link" href="/dashboard"><i class="icon-speedometer"></i> Dashboard </a>
-      </li>
-    </ul>  --}}
-
     @include('_partials.coreui.breadcrumbs.header')
-
 
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item d-md-down-none"><a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a></li>

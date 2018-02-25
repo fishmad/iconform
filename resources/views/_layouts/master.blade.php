@@ -24,13 +24,9 @@
     @include('_partials.coreui.sidebar')
 
     <main class="main">
-      {{--  @include('_partials.coreui.breadcrumbs.body')  --}}
-
       @include('_partials.flash-alerts')
-
       <!-- Content -->
       @yield('content')
-
     </main><!-- /Content -->
 
     @include('_partials.coreui.asidemenu')
@@ -49,15 +45,16 @@
   <!-- Default: CoreUI main scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
 @stack('scripts')
+@stack('view-scripts')
 
-  <!-- Autohide/dismiss BS4 Alerts after given time -->
+  <!-- GLOB: BS4 Alerts autohide -->
   <script>
     window.setTimeout(function() {
       $(".alert").fadeTo(500, 0).slideUp(500, function(){
           $(this).remove(); 
       });
     }, 4000);
-  </script>
+  </script><!-- /.GLOB: BS4 Alerts autohide -->
 
   </body>
 </html>
