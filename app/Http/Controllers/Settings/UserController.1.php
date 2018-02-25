@@ -10,8 +10,6 @@ use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
-use DB;
-use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
@@ -27,34 +25,13 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $columns = ['id', 'name', 'email'];
-        // $columns = DB::getSchemaBuilder()->getColumnListing('users');
-
-        // $samples = Sample::select(['id', 'title', 'email', 'updated_at']);
         $users = User::all();
 
         //return view('app.settings.users.index')->with('users', $users);
-        return view('app.settings.users.index', compact('columns', 'users'));
+        return view('app.settings.users.index', compact('users'));
 
     }
 
-    public function datatables()
-    {
-        // if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
-        //   return abort(401);
-        // }
-
-        $users = User::with('roles')->get();
-
-        return Datatables::of($users)
-
-        ->addColumn('action', function ($users) {
-          return view('app.settings.users.includes.actionButtons', compact('users'))->render();
-        })
-        ->rawColumns(['action'])
-        ->make(true);
-    }
 
 
     /**
@@ -65,11 +42,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
+
         $user = User::findOrFail($id);
         $roles = $user->getRoleNames(); // Returns a collection
         $permissions = $user->getAllPermissions()->groupBy('groupings');
 
         return view('app.settings.users.show', compact('user', 'permissions', 'roles'));
+
     }
 
 

@@ -13,8 +13,7 @@
               <a href="{{ route('app.registers.samples.create') }}" class="btn btn-outline-primary float-right">
                 Create a new Record
               </a>
-              <h2>
-                <i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
+              <h2><i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
                 <small>
                   Create, read, update and delete samples from this screen.
                 </small>
@@ -40,6 +39,11 @@
               </table>
 
             </div><!-- ./card-body-->
+
+            <div class="card-footer">
+              Samples list
+            </div>
+
           </div><!-- ./card-->
         </div><!-- ./animate fadeIn-->
 

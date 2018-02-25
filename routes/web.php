@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function() {
 Route::view('app/settings', 'app.settings.default')->name('app.settings.default'); // Required
 
 Route::namespace('Settings')->prefix('app/settings')->name('app.settings.')->group(function () {
+  Route::get('users/datatables', 'UserController@datatables');
   Route::resource('users', 'UserController');
   Route::resource('roles', 'RoleController');
   Route::resource('permissions', 'PermissionController');

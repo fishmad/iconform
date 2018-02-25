@@ -6,8 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Gate;
-use DB;
 use App\Sample;
+use DB;
 use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
