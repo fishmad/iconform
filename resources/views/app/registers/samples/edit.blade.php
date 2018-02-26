@@ -12,7 +12,7 @@
               </a>
               <h2><i class="fa fa-align-justify"></i> <strong>Edit</strong> Sample
                 <small>
-                  {{ $sample->title }}
+                  {{ $sample->name }}
                 </small>
               </h2>
             </div><!-- ./card-header-->

@@ -149,7 +149,7 @@ class SamplesController extends Controller
           return abort(401);
         }
         $this->validate($request, [
-          'title' => 'required'
+          'name' => 'required'
         ]);
 
         $requestData = $request->all();
@@ -174,7 +174,7 @@ class SamplesController extends Controller
         }
 
         $this->validate($request, [
-          'title' => 'required'
+          'name' => 'required'
         ]);
         
         $requestData = $request->all();

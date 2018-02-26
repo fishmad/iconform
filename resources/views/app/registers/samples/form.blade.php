@@ -1,16 +1,16 @@
-<div class="form-group row {{ $errors->has('title') ? 'has-error' : ''}}">
-  {!! Form::label('title', 'Title', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
+<div class="form-group row {{ $errors->has('name') ? 'has-error' : ''}}">
+  {!! Form::label('name', 'Name', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
   <div class="col-md-9 col-lg-8">
-    {!! Form::text('title', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-    {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+    {!! Form::text('name', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 
-<div class="form-group row {{ $errors->has('email') ? 'has-error' : ''}}">
-  {!! Form::label('email', 'Email', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
+<div class="form-group row {{ $errors->has('image') ? 'has-error' : ''}}">
+  {!! Form::label('image', 'Image', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
   <div class="col-md-9 col-lg-8">
-    {!! Form::email('email', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-    {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+    {!! Form::text('image', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('image', '<p class="help-block">:message</p>') !!}
   </div>
 </div>
 

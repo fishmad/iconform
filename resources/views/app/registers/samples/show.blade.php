@@ -28,10 +28,10 @@
                       </tr>
                       <tr>
                         <th>Title</th>
-                        <td>{{ $sample->title }}</td>
+                        <td>{{ $sample->name }}</td>
                       </tr><tr>
                         <th>Email</th>
-                        <td>{{ $sample->email }}</td>
+                        <td>{{ $sample->image }}</td>
                       </tr>
                       <tr>
                         <th>Date</th>
