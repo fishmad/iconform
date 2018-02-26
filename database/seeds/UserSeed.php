@@ -12,19 +12,71 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name' => 'Master Crafter',
-            'email' => 'fishmadwebdesign@gmail.com',
-            'password' => 'password'
+        $superUser = User::create([
+            'name'      => 'Master Crafter',
+            'email'     => 'superuser@user.com',
+            'password'  => 'password'
         ]);
-        $user->assignRole('administrator');
-				
-        $reader = User::create([
-            'name' => 'Smith Jones',
-            'email' => 'bn@gmail.com',
-            'password' => 'password'
+        $superUser->assignRole('SuperUser', 'Manager');
+
+
+        $admin = User::create([
+            'name'      => 'Admin Smith Jones',
+            'email'     => 'admin@user.com',
+            'password'  => 'password'
         ]);
-        $reader->assignRole('guest');
+        $admin->assignRole('Admin');
+
+
+        $executive = User::create([
+          'name'      => 'CEO Mr Jones',
+          'email'     => 'ceo@user.com',
+          'password'  => 'password'
+        ]);
+        $executive->assignRole('CEO', 'Manager', 'Admin');
+
+
+        $executive = User::create([
+          'name'      => 'Exec Smith J',
+          'email'     => 'exec@user.com',
+          'password'  => 'password'
+        ]);
+        $executive->assignRole('Executive');
+
+
+        $manager = User::create([
+          'name'      => 'Mngr Smitherson',
+          'email'     => 'manager@user.com',
+          'password'  => 'password'
+        ]);
+        $manager->assignRole('Manager');
+
+
+        $supervisor = User::create([
+          'name'      => 'Suprv Smit Johns',
+          'email'     => 'supervisor@user.com',
+          'password'  => 'password'
+        ]);
+        $supervisor->assignRole('Supervisor');
+
+
+        $fakeEmployee = factory(App\User::class, 50)->create();
+          foreach($fakeEmployee as $user){
+            $user->assignRole('Employee');
+          } 
+
+
+        $fakeContractor = factory(App\User::class, 20)->create();
+          foreach($fakeContractor as $user){
+            $user->assignRole('Contractor');
+          } 
+
+
+        $fakeVisitor = factory(App\User::class, 10)->create();
+          foreach($fakeVisitor as $user){
+            $user->assignRole('Visitor');
+          } 
+
 
     }
 }
