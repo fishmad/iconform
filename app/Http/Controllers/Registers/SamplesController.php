@@ -30,13 +30,16 @@ class SamplesController extends Controller
      */
     public function index(Request $request)
     {
-        if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
-          return abort(401);
-        }
+        // if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
+        //   return abort(401);
+        // }
 
-        $dbFields = DB::getSchemaBuilder()->getColumnListing('samples');
+        $columns = ['id', 'name', 'image', 'date'];
+        //$samples = Sample::all();
 
-        return view('app.registers.samples.index', compact('dbFields'));
+        $samples = DB::getSchemaBuilder()->getColumnListing('samples');
+
+        return view('app.registers.samples.index', compact('columns', 'samples'));
     }
 
 

@@ -25,10 +25,10 @@
               <table id="datatable" data-toggle="dataTable" data-form="deleteForm" class="table table-responsive-sm" cellspacing="0" width="100%">
                 <thead>
                   <tr>
-@foreach ($dbFields as $dbField => $name)
-@if ($name === "created_at" || $name === "updated_at" || $name === "description" || $name === "image"  )
+@foreach ($columns as $tbl_headers => $table_title)
+@if ($table_title === "created_at" || $table_title === "updated_at" || $table_title === "password" || $table_title === "remember_token" )
 @else
-                    <th>{{ ucfirst($name) }}</th>
+                    <th>{{ str_replace('_', ' ', title_case(($table_title))) }}</th>
 @endif
 @endforeach
                     <th>Action</th>

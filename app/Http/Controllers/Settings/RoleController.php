@@ -10,15 +10,19 @@ use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
+use DB;
+use Yajra\Datatables\Datatables;
 
 class RoleController extends Controller
 {
 
-  public function __construct() 
-  {
-      $this->middleware(['auth', 'isAdmin']);
-  }
-  
+
+    public function __construct() 
+    {
+        $this->middleware(['auth', 'isAdmin']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +30,25 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $columns = ['id', 'name'];
         $roles = Role::all();
 
-        return view('app.settings.roles.index')->with('roles', $roles);
+        return view('app.settings.roles.index', compact('columns', 'roles'));
     }
 
-	
+
+    public function datatables()
+    {
+        $roles = Role::all();
+        return Datatables::of($roles)
+        ->addColumn('action', function ($roles) {
+          return view('app.settings.roles.includes.actionButtons', compact('roles'))->render();
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
+
     /**
      * Display the specified resource.
      *

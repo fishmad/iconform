@@ -1,9 +1,9 @@
 
-<a href="{{ route('app.settings.users.show', $users->id) }}" title="View" class="btn btn-primary btn-sm">
-<i class="fa fa-fw fa-search-plus"></i>
-</a>
 <a href="{{ route('app.settings.users.edit', $users->id) }}" title="Edit" class="btn btn-success btn-sm">
 <i class="fa fa-fw fa-edit"></i>
+</a>
+<a href="{{ route('app.settings.users.show', $users->id) }}" title="View" class="btn btn-primary btn-sm">
+<i class="fa fa-fw fa-search-plus"></i>
 </a>
 
 {{ Form::open([ 'method'=>'DELETE', 'url' => ['/app/settings/users', $users->id], 'style' => 'display:inline']) }}

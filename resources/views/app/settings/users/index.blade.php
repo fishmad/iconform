@@ -5,7 +5,7 @@
       <div class="container">
         <div class="animate fadeIn">
 
-          @include('app.registers.samples.includes.confirmModal')
+          @include('app.settings.users.includes.confirmModal')
 
           <div class="card">
 
@@ -28,7 +28,7 @@
 @foreach ($columns as $tbl_headers => $table_title)
 @if ($table_title === "created_at" || $table_title === "updated_at" || $table_title === "password" || $table_title === "remember_token" )
 @else
-                    <th>{{ ucfirst($table_title) }}</th>
+                    <th>{{ str_replace('_', ' ', title_case(($table_title))) }}</th>
 @endif
 @endforeach
                     <th>Roles</th>

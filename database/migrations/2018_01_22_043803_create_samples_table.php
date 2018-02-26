@@ -14,12 +14,11 @@ class CreateSamplesTable extends Migration
     {
         Schema::create('samples', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->string('title')->nullable();
+            $table->string('name')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('email', 150)->nullable();
             $table->date('date')->nullable();
+            $table->timestamps();
 
             // $table->json('json');
             // $table->integer('number');

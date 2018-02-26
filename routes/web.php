@@ -26,7 +26,9 @@ Route::view('app/settings', 'app.settings.default')->name('app.settings.default'
 Route::namespace('Settings')->prefix('app/settings')->name('app.settings.')->group(function () {
   Route::get('users/datatables', 'UserController@datatables');
   Route::resource('users', 'UserController');
+  Route::get('roles/datatables', 'RoleController@datatables');
   Route::resource('roles', 'RoleController');
+  Route::get('permissions/datatables', 'PermissionController@datatables');
   Route::resource('permissions', 'PermissionController');
 });
 

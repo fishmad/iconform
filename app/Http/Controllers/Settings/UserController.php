@@ -27,16 +27,13 @@ class UserController extends Controller
      */
     public function index()
     {
-
         $columns = ['id', 'name', 'email'];
         // $columns = DB::getSchemaBuilder()->getColumnListing('users');
 
         // $samples = Sample::select(['id', 'title', 'email', 'updated_at']);
         $users = User::all();
 
-        //return view('app.settings.users.index')->with('users', $users);
         return view('app.settings.users.index', compact('columns', 'users'));
-
     }
 
     public function datatables()

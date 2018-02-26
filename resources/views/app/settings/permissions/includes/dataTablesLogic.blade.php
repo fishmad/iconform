@@ -7,7 +7,7 @@
         processing: true,
         responsive: true,
         colReorder: true,
-        lengthMenu: [[15, 25, 50, 100, 500, -1], [15, 25, 50, 100, 500, "All"]],
+        lengthMenu: [[25, 50, 100, 500, -1], [25, 50, 100, 500, "All"]],
         pagingType: "numbers",
 
         dom:
@@ -36,7 +36,7 @@
             "className": 'btn-outline-primary btn-sm'
           }
         ],
-        ajax: '{!! url('app/registers/samples/datatables') !!}',
+        ajax: '{!! url('app/settings/permissions/datatables') !!}',
         columns: [
 @foreach ($columns as $tbl_fields => $table_cell)
 @if ($table_cell === "created_at" || $table_cell === "updated_at" || $table_cell === "password" || $table_cell === "remember_token" )
@@ -44,6 +44,7 @@
           { data: '{!! $table_cell !!}', name: '{!! $table_cell !!}' },
 @endif
 @endforeach
+          // { data: 'roles[, ].name'},
           { data: 'action', name: 'action', "sClass": "text-md-right text-lg-right", orderable: false, searchable: false }
         ],
         order: [[0, 'asc']],

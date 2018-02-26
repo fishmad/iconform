@@ -10,6 +10,8 @@ use Auth;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Session;
+use DB;
+use Yajra\Datatables\Datatables;
 
 class PermissionController extends Controller
 {
@@ -25,13 +27,34 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        $columns = ['id', 'name', 'label', 'item_order', 'groupings', 'groupings_order'];
+        // $columns = DB::getSchemaBuilder()->getColumnListing('$permissions');
+
+        // $samples = Permission::select(['id', 'label', 'item_order', 'groupings', 'groupings_order', 'updated_at']);
         $permissions = Permission::all();
 
-        return view('app.settings.permissions.index')->with('permissions', $permissions);
+        return view('app.settings.permissions.index', compact('columns', 'permissions'));
     }
-		
-		
-		
+
+
+    public function datatables()
+    {
+        // if ((!Gate::allows('samples_all')) && (!Gate::allows('samples_browse_list'))) {
+        //   return abort(401);
+        // }
+
+        $permissions = Permission::all();
+
+        return Datatables::of($permissions)
+
+        ->addColumn('action', function ($permissions) {
+          return view('app.settings.permissions.includes.actionButtons', compact('permissions'))->render();
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
+
     /**
      * Display the specified resource.
      *
