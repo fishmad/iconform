@@ -2,39 +2,47 @@
 
 
 Route::middleware('auth')->group(function() {
-  Route::view('about', 'frontend.pages.about')->name('about');
-  Route::view('contact', 'frontend.pages.contact')->name('contact');
-  Route::view('faq', 'frontend.pages.faq')->name('faq');
+  Route::view('about', 'pages.about')->name('about');
+  Route::view('contact', 'pages.contact')->name('contact');
 });
 
 Auth::routes();
 
-Route::get('/', 'Dashboards\\DashboardController@index')->name('home');
-Route::get('app', 'Dashboards\\DashboardController@index')->name('app');
-Route::get('app/dashboard', 'Dashboards\\DashboardController@index')->name('dashboard');
-// Route::view('app/dashboard', 'app.dashboard.index')->name('dashboard');
+Route::get('/', 'DashboardController@index')->name('home');
+
+//Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+// Route::view('dashboard', 'dashboard.index')->name('dashboard');
 
 /* Settings - vendor routes requiring auth protection */
 Route::middleware('auth')->group(function() {
-  Route::get('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator'])->name('getCrud');
-  Route::post('app/tools/crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator'])->name('postCrud');
+  Route::get('crud', ['uses' => 'ProcessController@getGenerator'])->name('getCrud');
+  Route::post('crud', ['uses' => 'ProcessController@postGenerator'])->name('postCrud');
 });
 
-/* Settings */
-Route::view('app/settings', 'app.settings.default')->name('app.settings.default'); // Required
+// /* Settings */
+// Route::view('settings', 'settings.default')->name('settings.default'); // Required
 
-Route::namespace('Settings')->prefix('app/settings')->name('app.settings.')->group(function () {
-  Route::get('users/datatables', 'UserController@datatables');
-  Route::resource('users', 'UserController');
-  Route::get('roles/datatables', 'RoleController@datatables');
-  Route::resource('roles', 'RoleController');
-  Route::get('permissions/datatables', 'PermissionController@datatables');
-  Route::resource('permissions', 'PermissionController');
-});
+// Route::namespace('Settings')->prefix('settings')->name('settings.')->group(function () {
+//   Route::get('users/datatables', 'UserController@datatables');
+//   Route::resource('users', 'UserController');
+//   Route::get('roles/datatables', 'RoleController@datatables');
+//   Route::resource('roles', 'RoleController');
+//   Route::get('permissions/datatables', 'PermissionController@datatables');
+//   Route::resource('permissions', 'PermissionController');
+// });
+
+Route::get('users/datatables', 'UserController@datatables');
+Route::resource('users', 'UserController');
+
+Route::get('roles/datatables', 'RoleController@datatables');
+Route::resource('roles', 'RoleController');
+
+Route::get('permissions/datatables', 'PermissionController@datatables');
+Route::resource('permissions', 'PermissionController');
 
 /* Registers */
-Route::view('app/registers', 'app.registers.default')->name('app.registers.default'); // Require
-Route::namespace('Registers')->prefix('app/registers')->name('app.registers.')->group(function () {
+Route::view('registers', 'registers.default')->name('registers.default'); // Require
+Route::namespace('Registers')->prefix('registers')->name('registers.')->group(function () {
   Route::get('samples/datatables', 'SamplesController@datatables');
   Route::resource('samples', 'SamplesController');
 });
@@ -66,3 +74,13 @@ Route::namespace('Registers')->prefix('app/registers')->name('app.registers.')->
 // Section Pages
 Route::view('/error404','_errors.404')->name('error404');
 Route::view('/error500','_errors.500')->name('error500');
+
+
+Route::get('samples/datatables', 'SamplesController@datatables');
+Route::resource('samples', 'SamplesController');
+
+
+Route::get('posts/datatables', 'SamplesController@datatables');
+Route::resource('posts', 'SamplesController');
+Route::resource('horses', 'horsesController');
+Route::resource('frogs', 'FrogsController');

@@ -25,6 +25,7 @@ class Sample extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'email', 'date', 'description'];
+    protected $fillable = ['name', 'image', 'email', 'date', 'description'];
 
+    
 }

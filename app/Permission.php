@@ -11,7 +11,7 @@ class Permission extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'label', 'item_order', 'groupings', 'groupings_order', ];
+    protected $fillable = ['name', 'label'];
 
     /**
      * A permission can be applied to roles.
@@ -21,17 +21,5 @@ class Permission extends Model
     public function roles()
     {
         return $this->belongsToMany(Role::class);
-    }
-
-    /**
-     * Grant the given role to a permission.
-     *
-     * @param  Role $role
-     *
-     * @return mixed
-     */
-    public function giveRoleTo(Role $role)
-    {
-        return $this->roles()->save($role);
     }
 }

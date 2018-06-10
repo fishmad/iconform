@@ -1,13 +1,9 @@
 <?php
 
-// Home
-Breadcrumbs::register('/', function ($breadcrumbs) {
-  $breadcrumbs->push('Frontend', route('frontend.default'));
-});
 
 // Home
 Breadcrumbs::register('home', function ($breadcrumbs) {
-  $breadcrumbs->push('Home', route('app'));
+  $breadcrumbs->push('Home', route('home'));
 });
 
 // Home > About
@@ -16,20 +12,11 @@ Breadcrumbs::register('about', function ($breadcrumbs) {
   $breadcrumbs->push('About', route('about'));
 });
 
-// Home > About > Contact
+// Home > Contact
 Breadcrumbs::register('contact', function ($breadcrumbs) {
   $breadcrumbs->parent('about');
   $breadcrumbs->push('Contact us', route('contact'));
 });
-
-// Home > FAQ
-Breadcrumbs::register('faq.faq', function ($breadcrumbs) {
-  $breadcrumbs->parent('home');
-  $breadcrumbs->push('FAQ', route('faq.faq'));
-});
-
-
-
 
 
 // Dashboard
@@ -43,106 +30,106 @@ Breadcrumbs::register('dashboard', function ($breadcrumbs) {
 
 // Home > Settings >
 #################################################################################
-Breadcrumbs::register('app.settings.default', function ($breadcrumbs) {
+Breadcrumbs::register('.settings.default', function ($breadcrumbs) {
   $breadcrumbs->parent('home');
-  $breadcrumbs->push('Settings', route('app.settings.default'));
+  $breadcrumbs->push('Settings', route('.settings.default'));
 });
 #################################################################################
 
 // Home > Settings > users >
 #################################################################################
-Breadcrumbs::register('app.settings.users.index', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.default');
-  $breadcrumbs->push('Users', route('app.settings.users.index'));
+Breadcrumbs::register('.settings.users.index', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.default');
+  $breadcrumbs->push('Users', route('.settings.users.index'));
 });
 // Home > Settings > Users > Create
-Breadcrumbs::register('app.settings.users.create', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.users.index');
-  $breadcrumbs->push('Create User', route('app.settings.users.create'));
+Breadcrumbs::register('.settings.users.create', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.users.index');
+  $breadcrumbs->push('Create User', route('.settings.users.create'));
 });
 // Home > Settings > Users > Show
-Breadcrumbs::register('app.settings.users.show', function ($breadcrumbs, $user) {
-  $breadcrumbs->parent('app.settings.users.index');
-  $breadcrumbs->push('Show User', route('app.settings.users.show', $user));
+Breadcrumbs::register('.settings.users.show', function ($breadcrumbs, $user) {
+  $breadcrumbs->parent('.settings.users.index');
+  $breadcrumbs->push('Show User', route('.settings.users.show', $user));
 });
 // Home > Settings > Users > Edit
-Breadcrumbs::register('app.settings.users.edit', function ($breadcrumbs, $user) {
-  $breadcrumbs->parent('app.settings.users.index');
-  $breadcrumbs->push('Edit User', route('app.settings.users.edit', $user));
+Breadcrumbs::register('.settings.users.edit', function ($breadcrumbs, $user) {
+  $breadcrumbs->parent('.settings.users.index');
+  $breadcrumbs->push('Edit User', route('.settings.users.edit', $user));
 });
 #################################################################################
 
 // Home > Settings > Roles > 
 #################################################################################
-Breadcrumbs::register('app.settings.roles.index', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.default');
-  $breadcrumbs->push('Roles', route('app.settings.roles.index'));
+Breadcrumbs::register('.settings.roles.index', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.default');
+  $breadcrumbs->push('Roles', route('.settings.roles.index'));
 });
 // Home > Settings > Roles > Create
-Breadcrumbs::register('app.settings.roles.create', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.roles.index');
-  $breadcrumbs->push('Create Role', route('app.settings.roles.create'));
+Breadcrumbs::register('.settings.roles.create', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.roles.index');
+  $breadcrumbs->push('Create Role', route('.settings.roles.create'));
 });
 // Home > Settings > Roles > Show
-Breadcrumbs::register('app.settings.roles.show', function ($breadcrumbs, $role) {
-  $breadcrumbs->parent('app.settings.roles.index');
-  $breadcrumbs->push('Show Role', route('app.settings.roles.show', $role));
+Breadcrumbs::register('.settings.roles.show', function ($breadcrumbs, $role) {
+  $breadcrumbs->parent('.settings.roles.index');
+  $breadcrumbs->push('Show Role', route('.settings.roles.show', $role));
 });
 // Home > Settings > Roles > Edit
-Breadcrumbs::register('app.settings.roles.edit', function ($breadcrumbs, $role) {
-  $breadcrumbs->parent('app.settings.roles.index');
-  $breadcrumbs->push('Edit Role', route('app.settings.roles.edit', $role));
+Breadcrumbs::register('.settings.roles.edit', function ($breadcrumbs, $role) {
+  $breadcrumbs->parent('.settings.roles.index');
+  $breadcrumbs->push('Edit Role', route('.settings.roles.edit', $role));
 });
 #################################################################################
 
 // Home > Settings > Permissions >
 ################################################################################# 
-Breadcrumbs::register('app.settings.permissions.index', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.default');
-  $breadcrumbs->push('Permissions', route('app.settings.permissions.index'));
+Breadcrumbs::register('.settings.permissions.index', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.default');
+  $breadcrumbs->push('Permissions', route('.settings.permissions.index'));
 });
 // Home > Settings > Permissions > Create
-Breadcrumbs::register('app.settings.permissions.create', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.settings.permissions.index');
-  $breadcrumbs->push('Create Permission', route('app.settings.permissions.create'));
+Breadcrumbs::register('.settings.permissions.create', function ($breadcrumbs) {
+  $breadcrumbs->parent('.settings.permissions.index');
+  $breadcrumbs->push('Create Permission', route('.settings.permissions.create'));
 });
 // Home > Settings > Permissions > Show
-Breadcrumbs::register('app.settings.permissions.show', function ($breadcrumbs, $permission) {
-  $breadcrumbs->parent('app.settings.permissions.index');
-  $breadcrumbs->push('Show Permission', route('app.settings.permissions.show', $permission));
+Breadcrumbs::register('.settings.permissions.show', function ($breadcrumbs, $permission) {
+  $breadcrumbs->parent('.settings.permissions.index');
+  $breadcrumbs->push('Show Permission', route('.settings.permissions.show', $permission));
 });
 // Home > Settings > Permissions > Edit
-Breadcrumbs::register('app.settings.permissions.edit', function ($breadcrumbs, $permission) {
-  $breadcrumbs->parent('app.settings.permissions.index');
-  $breadcrumbs->push('Edit Permission', route('app.settings.permissions.edit', $permission));
+Breadcrumbs::register('.settings.permissions.edit', function ($breadcrumbs, $permission) {
+  $breadcrumbs->parent('.settings.permissions.index');
+  $breadcrumbs->push('Edit Permission', route('.settings.permissions.edit', $permission));
 });
 #################################################################################
 
 // Home > Registers
-Breadcrumbs::register('app.registers.default', function ($breadcrumbs) {
+Breadcrumbs::register('.registers.default', function ($breadcrumbs) {
   $breadcrumbs->parent('home');
-  $breadcrumbs->push('Registers', route('app.registers.default'));
+  $breadcrumbs->push('Registers', route('.registers.default'));
 });
 
 // Home > Registers > Samples > 
 #################################################################################
-Breadcrumbs::register('app.registers.samples.index', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.registers.default');
-  $breadcrumbs->push('Samples', route('app.registers.samples.index'));
+Breadcrumbs::register('.registers.samples.index', function ($breadcrumbs) {
+  $breadcrumbs->parent('.registers.default');
+  $breadcrumbs->push('Samples', route('.registers.samples.index'));
 });
 // Home > Registers > Samples > Create
-Breadcrumbs::register('app.registers.samples.create', function ($breadcrumbs) {
-  $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Create', route('app.registers.samples.create'));
+Breadcrumbs::register('.registers.samples.create', function ($breadcrumbs) {
+  $breadcrumbs->parent('.registers.samples.index');
+  $breadcrumbs->push('Create', route('.registers.samples.create'));
 });
 // Home > Registers > Samples > Show
-Breadcrumbs::register('app.registers.samples.show', function ($breadcrumbs, $sample) {
-  $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Show', route('app.registers.samples.show', $sample));
+Breadcrumbs::register('.registers.samples.show', function ($breadcrumbs, $sample) {
+  $breadcrumbs->parent('.registers.samples.index');
+  $breadcrumbs->push('Show', route('.registers.samples.show', $sample));
 });
 // Home > Registers > Samples > Edit
-Breadcrumbs::register('app.registers.samples.edit', function ($breadcrumbs, $sample) {
-  $breadcrumbs->parent('app.registers.samples.index');
-  $breadcrumbs->push('Edit', route('app.registers.samples.edit', $sample));
+Breadcrumbs::register('.registers.samples.edit', function ($breadcrumbs, $sample) {
+  $breadcrumbs->parent('.registers.samples.index');
+  $breadcrumbs->push('Edit', route('.registers.samples.edit', $sample));
 });
 #################################################################################

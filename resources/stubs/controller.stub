@@ -5,11 +5,25 @@ namespace DummyNamespace;
 use DummyRootNamespaceHttp\Requests;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
+use Illuminate\Support\Facades\Gate;
 use DummyRootNamespace{{modelNamespace}}{{modelName}};
+use DB;
+use Yajra\Datatables\Datatables;
 use Illuminate\Http\Request;
 
 class DummyClass extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,17 +31,41 @@ class DummyClass extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = {{pagination}};
+        // if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_browse_list'))) {
+        //   return abort(401);
+        // }
 
-        if (!empty($keyword)) {
-            ${{crudName}} = {{modelName}}::{{whereSnippet}}paginate($perPage);
-        } else {
-            ${{crudName}} = {{modelName}}::paginate($perPage);
+        $columns = ['id', 'name', 'date'];
+        //${{crudName}} = {{modelName}}::all();
+
+        ${{crudName}} = DB::getSchemaBuilder()->getColumnListing('{{crudName}}');
+
+        return view('{{viewPath}}{{viewName}}.index', compact('columns', '{{crudName}}'));
+    }
+
+
+    public function datatables()
+    {
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_browse_list'))) {
+          return abort(401);
         }
 
-        return view('{{viewPath}}{{viewName}}.index', compact('{{crudName}}'));
+        // ${{crudName}} = {{crudName}}::select(['id', 'name', 'updated_at']);
+        ${{crudName}} = {{modelName}}::all();
+
+        return Datatables::of(${{crudName}})
+
+        // ->editColumn('title', function(${{crudName}}) {
+        //   $url = route('app.registers.{{crudName}}.show', ${{crudName}}->id);
+        //   return '<a href="' . $url . '">' . ${{crudName}}->title . '</a>';
+        // })
+        ->rawColumns(['name', 'action'])
+        ->addColumn('action', function (${{crudName}}) {
+          return view('{{crudName}}.includes.actionButtons', compact('{{crudName}}'))->render();
+        })
+        ->make(true);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,8 +74,12 @@ class DummyClass extends Controller
      */
     public function create()
     {
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_add_create'))) {
+          return abort(401);
+        }
         return view('{{viewPath}}{{viewName}}.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -48,13 +90,19 @@ class DummyClass extends Controller
      */
     public function store(Request $request)
     {
-        {{validationRules}}
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_add_create'))) {
+          return abort(401);
+        }
+        $this->validate($request, [
+          'name' => 'required'
+        ]);
+
         $requestData = $request->all();
-        {{fileSnippet}}
         {{modelName}}::create($requestData);
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} added!');
+        return redirect('{{routeGroup}}{{viewName}}')->with('success', '{{modelName}} added!');
     }
+
 
     /**
      * Display the specified resource.
@@ -65,10 +113,14 @@ class DummyClass extends Controller
      */
     public function show($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_read_show'))) {
+          return abort(401);
+        }
+        ${{crudName}} = {{modelName}}::findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.show', compact('{{crudNameSingular}}'));
+        return view('{{viewPath}}{{viewName}}.show', compact('{{crudName}}'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -79,10 +131,14 @@ class DummyClass extends Controller
      */
     public function edit($id)
     {
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_edit_update'))) {
+          return abort(401);
+        }
+        ${{crudName}} = {{modelName}}::findOrFail($id);
 
-        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudNameSingular}}'));
+        return view('{{viewPath}}{{viewName}}.edit', compact('{{crudName}}'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -94,16 +150,22 @@ class DummyClass extends Controller
      */
     public function update(Request $request, $id)
     {
-        {{validationRules}}
-        $requestData = $request->all();
-        {{fileSnippet}}
-        ${{crudNameSingular}} = {{modelName}}::findOrFail($id);
-        ${{crudNameSingular}}->update($requestData);
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_add_create'))) {
+          return abort(401);
+        }
 
-        return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} updated!');
+        $this->validate($request, [
+          'name' => 'required'
+        ]);
+        
+        ${{crudName}} = {{modelName}}::findOrFail($id);
+        ${{crudName}}->update($request->all());
+
+        return redirect(route('{{routeGroup}}{{viewName}}'))->withSuccess('{{modelName}} was updated!');
     }
 
-    /**
+
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -112,8 +174,15 @@ class DummyClass extends Controller
      */
     public function destroy($id)
     {
+        if ((!Gate::allows('{{crudName}}_all')) && (!Gate::allows('{{crudName}}_delete_destroy'))) {
+          return abort(401);
+        }
+
+        ${{crudName}} = {{modelName}}::findOrFail($id);
         {{modelName}}::destroy($id);
 
         return redirect('{{routeGroup}}{{viewName}}')->with('flash_message', '{{modelName}} deleted!');
     }
+
+
 }

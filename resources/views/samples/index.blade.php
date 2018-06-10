@@ -5,16 +5,17 @@
       <div class="container-fluid">
         <div class="animate fadeIn">
 
-          @include('%%crudName%%.includes.confirmModal')
+          @include('samples.includes.confirmModal')
 
           <div class="card">
 
             <div class="card-header">
-              <a href="{{ route('%%crudName%%.create') }}" class="btn btn-outline-primary float-right">%%crudNameCap%%
+              <a href="{{ route('samples.create') }}" class="btn btn-outline-primary float-right">
+                Create a new Record
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>%%crudNameCap%%</strong> Register 
+              <h2><i class="fa fa-align-justify"></i> <strong>Samples</strong> Register 
                 <small>
-                  Create, read, update and delete %%crudName%% from this screen.
+                  Create, read, update and delete samples from this screen.
                 </small>
               </h2>
             </div>
@@ -40,7 +41,7 @@
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-              %%crudNameCap%% list
+              Samples list
             </div>
 
           </div><!-- ./card-->
@@ -54,7 +55,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.16/b-1.5.1/b-colvis-1.5.1/b-flash-1.5.1/b-html5-1.5.1/b-print-1.5.1/cr-1.4.1/fc-3.2.4/fh-3.1.3/r-2.2.1/rg-1.0.2/sl-1.2.5/datatables.min.css"/>
 @endpush
 
-@include('registers.samples.includes.dataTablesLogic')
+@include('samples.includes.dataTablesLogic')
 
 @push('scripts')
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
