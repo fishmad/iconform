@@ -43,10 +43,10 @@
               Users list
             </div>
 
-        </div><!-- ./card-->
-      </div><!-- ./animate fadeIn-->
+          </div><!-- ./card-->
+        </div><!-- ./animate fadeIn-->
 
-    </div><!-- ./container || container-fluid-->
+      </div><!-- ./container || container-fluid-->
 
 @endsection
 

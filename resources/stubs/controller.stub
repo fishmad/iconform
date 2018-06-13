@@ -36,8 +36,8 @@ class DummyClass extends Controller
         // }
 
         $columns = ['id', 'name', 'date'];
-        //${{crudName}} = {{modelName}}::all();
 
+        // ${{crudName}} = {{modelName}}::all();
         ${{crudName}} = DB::getSchemaBuilder()->getColumnListing('{{crudName}}');
 
         return view('{{viewPath}}{{viewName}}.index', compact('columns', '{{crudName}}'));
@@ -55,14 +55,29 @@ class DummyClass extends Controller
 
         return Datatables::of(${{crudName}})
 
-        // ->editColumn('title', function(${{crudName}}) {
-        //   $url = route('app.registers.{{crudName}}.show', ${{crudName}}->id);
-        //   return '<a href="' . $url . '">' . ${{crudName}}->title . '</a>';
-        // })
-        ->rawColumns(['name', 'action'])
         ->addColumn('action', function (${{crudName}}) {
-          return view('{{crudName}}.includes.actionButtons', compact('{{crudName}}'))->render();
+          return ('
+            <a href="/{{crudName}}/' . ${{crudName}}->id . '/edit" title="Edit" class="btn btn-success btn-sm">
+            <i class="fa fa-fw fa-edit"></i>
+            </a>
+            <a href="/{{crudName}}/' . ${{crudName}}->id . '" title="View" class="btn btn-primary btn-sm">
+            <i class="fa fa-fw fa-search-plus"></i>
+            </a>
+            <form method="POST" action="/{{crudName}}/' . ${{crudName}}->id . '" accept-charset="UTF-8" style="display:inline">
+              <input name="_method" type="hidden" value="DELETE">
+              <input name="_token" type="hidden" value="' . csrf_token() . '">
+              <button type="button" class="btn btn-sm btn-danger" title="Delete" data-toggle="modal" data-target="#confirmDelete" data-title="Confirm delete" 
+                data-message="Last chance! this action can not be reversed. Are you sure you want to delete the {{crudName}} with ID: ' . ${{crudName}}->id . ', ' . ${{crudName}}->name . '?">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+            </form>
+          ');
         })
+        // ->addColumn('action', function (${{crudName}}) {
+        //   return view('{{crudName}}.includes.actionButtons', compact('{{crudName}}'))->render();
+        // })
+
+        ->rawColumns(['action'])
         ->make(true);
     }
 

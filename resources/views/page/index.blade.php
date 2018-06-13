@@ -8,12 +8,12 @@
           <div class="card">
 
             <div class="card-header">
-              <a href="{{ route('%%crudName%%.create') }}" class="btn btn-outline-primary float-right">
+              <a href="{{ route('page.create') }}" class="btn btn-outline-primary float-right">
               Create
               </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>%%crudNameCap%%</strong> Register 
+              <h2><i class="fa fa-align-justify"></i> <strong>Page</strong> Register 
                 <small>
-                  Create, read, update and delete %%crudName%% from this screen.
+                  Create, read, update and delete page from this screen.
                 </small>
               </h2>
             </div><!-- ./card-header-->
@@ -39,7 +39,7 @@
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-              %%crudNameCap%% list
+              Page list
             </div>
 
           </div><!-- ./card-->
@@ -91,7 +91,7 @@
           }
         ],
 
-        ajax: '{!! url('%%crudName%%/datatables') !!}',
+        ajax: '{!! url('page/api') !!}',
 
         columns: [
 @foreach ($columns as $tbl_fields => $table_cell)

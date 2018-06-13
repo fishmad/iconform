@@ -79,8 +79,9 @@ Route::view('/error500','_errors.500')->name('error500');
 Route::get('samples/datatables', 'SamplesController@datatables');
 Route::resource('samples', 'SamplesController');
 
-
-Route::get('posts/datatables', 'SamplesController@datatables');
-Route::resource('posts', 'SamplesController');
-Route::resource('horses', 'horsesController');
-Route::resource('frogs', 'FrogsController');
+Route::resource('page', 'PageController');
+Route::resource('fire', 'fireController');
+Route::resource('trees', 'treesController');
+Route::resource('monkey', 'MonkeyController');
+Route::resource('donkeys', 'DonkeysController');
+Route::resource('dog', 'DogController');

@@ -15,7 +15,7 @@ class CreateSamplesTable extends Migration
         Schema::create('samples', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('title');
+            $table->string('name');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('email')->nullable();
