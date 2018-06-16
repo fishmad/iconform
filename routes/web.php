@@ -118,3 +118,5 @@ Route::resource('lake', 'LakeController');
 
 Route::get('lee/datatables', 'lee@datatables');
 Route::resource('lee', 'lee');
+Route::get('cat/datatables', 'CatController@datatables');
+Route::resource('cat', 'CatController');
