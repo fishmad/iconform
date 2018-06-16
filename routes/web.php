@@ -80,8 +80,41 @@ Route::get('samples/datatables', 'SamplesController@datatables');
 Route::resource('samples', 'SamplesController');
 
 Route::resource('page', 'PageController');
-Route::resource('fire', 'fireController');
-Route::resource('trees', 'treesController');
-Route::resource('monkey', 'MonkeyController');
-Route::resource('donkeys', 'DonkeysController');
-Route::resource('dog', 'DogController');
+
+Route::get('kid/datatables', 'KidController@datatables');
+Route::resource('kid', 'KidController');
+
+Route::get('owls/datatables', 'OwlsController@datatables');
+Route::resource('owls', 'OwlsController');
+
+Route::get('tree/datatables', 'TreeController@datatables');
+Route::resource('tree', 'TreeController');
+Route::resource('tool', 'ToolController');
+Route::resource('frog', 'FrogController');
+Route::resource('abo', 'AboController');
+Route::resource('bird', 'birdController');
+Route::get('bark/datatables', 'BarkController@datatables');
+Route::resource('bark', 'BarkController');
+Route::get('emu/datatables', 'EmuController@datatables');
+Route::resource('emu', 'EmuController');
+Route::get('zebra/datatables', 'ZebraController@datatables');
+Route::resource('zebra', 'ZebraController');
+Route::get('donkey/datatables', 'DonkeyController@datatables');
+Route::resource('donkey', 'DonkeyController');
+Route::get('donkey/datatables', 'DonkeyController@datatables');
+Route::resource('donkey', 'DonkeyController');
+Route::get('mouse/datatables', 'MouseController@datatables');
+Route::resource('mouse', 'MouseController');
+Route::get('fire/datatables', 'FireController@datatables');
+Route::resource('fire', 'FireController');
+Route::get('river/datatables', 'RiverController@datatables');
+Route::resource('river', 'RiverController');
+Route::get('lee/datatables', 'lee@datatables');
+Route::resource('lee', 'lee');
+
+Route::resource('lake', 'LakeController');
+Route::get('lake/datatables', 'LakeController@datatables');
+Route::resource('lake', 'LakeController');
+
+Route::get('lee/datatables', 'lee@datatables');
+Route::resource('lee', 'lee');
