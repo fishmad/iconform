@@ -1,1 +1,79 @@
-{"menus":[{"section":"External Pages","icon":"<i class=\"icon-home\"><\/i>","flag":"top-level","items":[{"name":"Dashboard","link":"\/","icon":"<i class=\"icon-home\"><\/i>"}]},{"section":"Pages","icon":"<i class=\"icon-docs\"><\/i>","flag":"dropdown","items":[{"name":"About","link":"\/about","icon":"<i class=\"icon-note\"><\/i>"},{"name":"Contact","link":"\/contact","icon":"<i class=\"icon-phone\"><\/i>"}]},{"section":"Users & Roles","icon":"<i class=\"icon-people\"><\/i>","flag":"dropdown","items":[{"name":"Users","link":"\/users","icon":"<i class=\"icon-people\"><\/i>"},{"name":"Roles","link":"\/roles","icon":"<i class=\"icon-key\"><\/i>"},{"name":"Permissions","link":"\/permissions","icon":"<i class=\"icon-lock-open\"><\/i>"}]},{"section":"Modules","icon":"<i class=\"icon-puzzle\"><\/i>","flag":"dropdown","items":[{"name":"Sample CRUD List","link":"\/samples","icon":"<i class=\"icon-puzzle\"><\/i>"},{"name":"Page","link":"\/page","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"bee","link":"\/bee","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Dog","link":"\/dog","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Dogs","link":"\/dogs","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Cats","link":"\/cats","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Dog","link":"\/dog","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Kid","link":"\/kid","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Owls","link":"\/owls","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Tree","link":"\/tree","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Tool","link":"\/tool","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Frog","link":"\/frog","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Abo","link":"\/abo","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"bird","link":"\/bird","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Bark","link":"\/bark","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Emu","link":"\/emu","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Zebra","link":"\/zebra","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Donkey","link":"\/donkey","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Donkey","link":"\/donkey","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Mouse","link":"\/mouse","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Fire","link":"\/fire","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"River","link":"\/river","icon":"<i class=\"icon-grid\"><\/i>"},{"name":"Lake","link":"\/lake","icon":"<i class=\"icon-grid\"><\/i>"}]},{"section":"Tools","icon":"<i class=\"icon-settings\"><\/i>","flag":"dropdown","items":[{"name":"CRUD Generator","link":"\/crud","icon":"<i class=\"icon-grid\"><\/i>"}]}]}
+{
+  "menus": [
+    {
+      "section": "External Pages",
+      "icon": "<i class=\"icon-home\"><\/i>",
+      "flag": "top-level",
+      "items": [
+        {
+          "name": "Dashboard",
+          "link": "\/",
+          "icon": "<i class=\"icon-home\"><\/i>"
+        }
+      ]
+    },
+    {
+      "section": "Pages",
+      "icon": "<i class=\"icon-docs\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "About",
+          "link": "\/about",
+          "icon": "<i class=\"icon-note\"><\/i>"
+        },
+        {
+          "name": "Contact",
+          "link": "\/contact",
+          "icon": "<i class=\"icon-phone\"><\/i>"
+        }
+      ]
+    },
+    {
+      "section": "Users & Roles",
+      "icon": "<i class=\"icon-people\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "Users",
+          "link": "\/users",
+          "icon": "<i class=\"icon-people\"><\/i>"
+        },
+        {
+          "name": "Roles",
+          "link": "\/roles",
+          "icon": "<i class=\"icon-key\"><\/i>"
+        },
+        {
+          "name": "Permissions",
+          "link": "\/permissions",
+          "icon": "<i class=\"icon-lock-open\"><\/i>"
+        }
+      ]
+    },
+    {
+      "section": "Modules",
+      "icon": "<i class=\"icon-puzzle\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "Sample CRUD List",
+          "link": "\/samples",
+          "icon": "<i class=\"icon-puzzle\"><\/i>"
+        }
+      ]
+    },
+    {
+      "section": "Tools",
+      "icon": "<i class=\"icon-settings\"><\/i>",
+      "flag": "dropdown",
+      "items": [
+        {
+          "name": "CRUD Generator",
+          "link": "\/crud",
+          "icon": "<i class=\"icon-grid\"><\/i>"
+        }
+      ]
+    }
+  ]
+}
