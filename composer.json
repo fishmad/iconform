@@ -4,17 +4,18 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "stable",
+
     "require": {
         "php": ">=7.0.0",
         "davejamesmiller/laravel-breadcrumbs": "4.*",
         "fideloper/proxy": "~3.3",
-        "fishmad/checkmate": "*",
+        "fishmad/checkmate": "dev-master",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "spatie/laravel-permission": "^2.7",
         "yajra/laravel-datatables-html": "3.*",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "appzcoder/crud-generator": "dev-fishmad"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
@@ -23,6 +24,12 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~6.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/fishmad/crud-generator"
+        }
+	],
     "autoload": {
         "classmap": [
             "database/seeds",
@@ -59,5 +66,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
