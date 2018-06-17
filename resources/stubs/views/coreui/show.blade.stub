@@ -1,46 +1,41 @@
-@extends('admin.layouts.master')
+@extends('layouts.master')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.partials.sidebar')
 
-            <div class="col-md-9">
-                <div class="panel panel-default">
-                    <div class="panel-heading">%%modelName%% {{ $%%crudNameSingular%%->%%primaryKey%% }}</div>
-                    <div class="panel-body">
+<div class="container">
+    <div class="animate fadeIn">
+        <div class="card">
 
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/%%routeGroup%%%%viewName%%/' . $%%crudNameSingular%%->%%primaryKey%% . '/edit') }}" title="Edit %%modelName%%"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['%%routeGroup%%%%crudName%%', $%%crudNameSingular%%->%%primaryKey%%],
-                            'style' => 'display:inline'
-                        ]) !!}
-                            {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                                    'type' => 'submit',
-                                    'class' => 'btn btn-danger btn-xs',
-                                    'title' => 'Delete %%modelName%%',
-                                    'onclick'=>'return confirm("Confirm delete?")'
-                            ))!!}
-                        {!! Form::close() !!}
-                        <br/>
-                        <br/>
+            <div class="card-header">
+                <a href="{{ url()->previous() }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right"><i class="fa fa-arrow-left"></i> Back</a>
+                <h2><i class="fa fa-align-justify"></i> <strong>Show</strong> %%modelName%% {{ $%%crudName%%->%%primaryKey%% }}
+                    <small>
+                    {{ $%%crudName%%->name }}{{ $%%crudName%%->title }} #{{ $%%crudName%%->%%primaryKey%% }}
+                    </small>
+                </h2>
+            </div><!-- ./card-header-->
 
-                        <div class="table-responsive">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $%%crudNameSingular%%->%%primaryKey%% }}</td>
-                                    </tr>
-                                    %%formBodyHtmlForShowView%%
-                                </tbody>
-                            </table>
-                        </div>
+            <div class="card-body">
 
-                    </div>
-                </div>
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>ID</th><td>{{ $%%crudName%%->%%primaryKey%% }}</td>
+                            </tr>
+                                %%formBodyHtmlForShowView%%
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+
+            </div><!-- ./card-body-->
+
+            <div class="card-footer">
+                Diplay %%modelNameCap%%
             </div>
-        </div>
-    </div>
+
+        </div><!-- ./card-->
+    </div><!-- ./animate fadeIn-->
+</div><!-- ./container-fluid-->
+
 @endsection

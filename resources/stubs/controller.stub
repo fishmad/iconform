@@ -41,7 +41,7 @@ class DummyClass extends Controller
         ${{crudName}} = {{modelName}}::all();
 
         /* Dynamic */
-        $columns = DB::getSchemaBuilder()->getColumnListing('{{crudName}}s');
+        $columns = DB::getSchemaBuilder()->getColumnListing('{{crudName}}');
         // /* Targeted */
         // $columns = ['id', 'name', 'date'];     
 
@@ -204,7 +204,7 @@ class DummyClass extends Controller
         ${{crudName}} = {{modelName}}::findOrFail($id);
         ${{crudName}}->update($request->all());
 
-        return redirect(route('{{routeGroup}}{{viewName}}'))->withSuccess('{{modelName}} was updated!');
+        return redirect(route('{{routeGroup}}{{viewName}}.index'))->withSuccess('{{modelName}} was updated!');
     }
 
 

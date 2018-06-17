@@ -1,1 +1,7 @@
-{!! Form::input('%%fieldType%%', '%%itemName%%', null, ('%%required%%' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+<div class="form-group row {{ $errors->has('%%itemName%%') ? 'has-error' : ''}}">
+  {!! Form::input('%%itemName%%', '%%itemName%%', ['class' => 'col-md-3 col-lg-2 col-form-label']) !!}
+  <div class="col-md-9 col-lg-8">
+    {!! Form::text('%%fieldType%%', '%%itemName%%', null, ('%%required%%' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+    {!! $errors->first('%%itemName%%', '<p class="help-block">:message</p>') !!}
+  </div>
+</div>

@@ -1,7 +1,8 @@
 %%formFieldsHtml%%
 
-<div class="form-group">
-    <div class="col-md-offset-4 col-md-4">
-        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}
-    </div>
+<div class="row">
+  <div class="offset-md-2 col-md-4">
+    {{ Form::button('<i class="fa fa-dot-circle-o"></i> ' . (isset($submitButtonText) ? $submitButtonText : "Submit"), ['class' => 'btn btn-primary', 'type' => 'submit'] ) }}
+    <a href="{{ url()->previous() }}" class="btn btn-danger" title="Back"><i class="fa fa-ban"></i> Cancel</a>
+  </div>
 </div>

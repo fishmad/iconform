@@ -2,47 +2,47 @@
 
 @section('content')
 
-      <div class="container">
-        <div class="animate fadeIn">
-          <div class="card">
+<div class="container">
+    <div class="animate fadeIn">
+        <div class="card">
 
             <div class="card-header">
-              <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
+                <a href="{{ url()->previous() }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
                 <i class="fa fa-arrow-left"></i> Back
-              </a>
-              <h2><i class="fa fa-align-justify"></i> <strong>Create</strong> %%modelName%%
-                <small>
-                  To add a new %%modelName%% record, complete the form details below and press submit to save your data.
-                </small>
-              </h2>
+                </a>
+                <h2><i class="fa fa-align-justify"></i> <strong>Create</strong> %%modelName%%
+                    <small>
+                        To add a new %%modelName%% record, complete the form details below and press submit to save your data.
+                    </small>
+                </h2>
             </div><!-- ./card-header-->
 
             <div class="card-body">
 
-              @if ($errors->any())
-              <ul class="alert alert-danger">
+                @if ($errors->any())
+                <ul class="alert alert-danger">
                 @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
+                <li>{{ $error }}</li>
                 @endforeach
-              </ul>
-              @endif
+                </ul>
+                @endif
 
-              {!! Form::open([
+                {!! Form::open([
                 'url' => '%%viewTemplateDir%%', 
                 'class' => 'form-horizontal', 
                 'files' => true
-              ]) !!}
+                ]) !!}
 
-              @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Create %%modelName%%'])
-              
-              {!! Form::close() !!}
+                    @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Create %%modelName%%'])
+
+                {!! Form::close() !!}
 
             </div><!-- /.card-body -->
 
-            <div class="card-footer">Create %%modelName%% form
+            <div class="card-footer">{{ ucfirst('%%modelName%%') }} Form
             </div>
-            
-          </div><!-- /.card -->
-        </div><!-- /.animate.fadeIn -->
-      </div><!-- /.container-fluid -->
+
+        </div><!-- /.card -->
+    </div><!-- /.animate.fadeIn -->
+</div><!-- /.container-fluid -->
 @endsection
