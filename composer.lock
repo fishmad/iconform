@@ -448,12 +448,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fishmad/checkmate.git",
-                "reference": "78f59d9f5cae20a0c6b8c37493ef00f0dbf9384d"
+                "reference": "38cbf044b58943f2580c9e4cfa0b79f7a1995d40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fishmad/checkmate/zipball/78f59d9f5cae20a0c6b8c37493ef00f0dbf9384d",
-                "reference": "78f59d9f5cae20a0c6b8c37493ef00f0dbf9384d",
+                "url": "https://api.github.com/repos/fishmad/checkmate/zipball/38cbf044b58943f2580c9e4cfa0b79f7a1995d40",
+                "reference": "38cbf044b58943f2580c9e4cfa0b79f7a1995d40",
                 "shasum": ""
             },
             "require": {
@@ -492,7 +492,7 @@
                 "laravel",
                 "laravel checkmate"
             ],
-            "time": "2018-06-17T06:14:03+00:00"
+            "time": "2018-06-17T10:18:26+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
