@@ -8,10 +8,10 @@
         <div class="card">
 
             <div class="card-header">
-                <a href="{{ route('%%crudName%%.create') }}" class="btn btn-outline-primary float-right">Create</a>
-                <h2><i class="fa fa-align-justify"></i> <strong>{{ str_singular('%%crudNameCap%%') }} </strong> Register 
+                <a href="{{ route('incidents.create') }}" class="btn btn-outline-primary float-right">Create</a>
+                <h2><i class="fa fa-align-justify"></i> <strong>{{ str_singular('Incidents') }} </strong> Register 
                     <small>
-                        Create, read, update and delete {{ str_plural('%%crudNameCap%%') }} from this screen.
+                        Create, read, update and delete {{ str_plural('Incidents') }} from this screen.
                     </small>
                 </h2>
             </div><!-- ./card-header-->
@@ -37,7 +37,7 @@
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-            {{ ucwords('%%modelName%%') }} List
+            {{ ucwords('Incident') }} List
             </div>
 
         </div><!-- ./card-->
@@ -89,7 +89,7 @@
                 }
             ],
 
-            ajax: '{!! url('%%crudName%%/datatables') !!}',
+            ajax: '{!! url('incidents/datatables') !!}',
 
             columns: [
                 @foreach ($columns as $tbl_fields => $table_cell)

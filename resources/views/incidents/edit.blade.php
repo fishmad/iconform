@@ -10,9 +10,9 @@
                 <a href="{{ url()->previous() }}" data-toggle="tooltip" title="Any changes you made will not be saved..." class="btn btn-outline-primary float-right">
                 <i class="fa fa-arrow-left"></i> Back
                 </a>
-                <h2><i class="fa fa-align-justify"></i> <strong>Edit</strong> %%modelName%% 
+                <h2><i class="fa fa-align-justify"></i> <strong>Edit</strong> Incident 
                 <small>
-                    {{ $%%crudName%%->name }}{{ $%%crudName%%->title }} #{{ $%%crudName%%->%%primaryKey%% }}
+                    {{ $incidents->name }}{{ $incidents->title }} #{{ $incidents->id }}
                 </small>
                 </h2>
             </div><!-- ./card-header-->
@@ -27,21 +27,21 @@
                 </ul>
                 @endif
 
-                {!! Form::model($%%crudName%%, [
+                {!! Form::model($incidents, [
                 'method' => 'PATCH',
-                'url' => ['/%%routeGroup%%%%viewName%%', $%%crudName%%->%%primaryKey%%],
+                'url' => ['/incidents', $incidents->id],
                 'class' => 'form-horizontal',
                 'files' => true
                 ]) !!}
 
-                    @include ('%%viewTemplateDir%%.form', ['submitButtonText' => 'Update ' . str_singular('%%crudNameCap%%')])
+                    @include ('incidents.form', ['submitButtonText' => 'Update ' . str_singular('Incidents')])
 
                 {!! Form::close() !!}
 
             </div><!-- ./card-body-->
 
             <div class="card-footer">
-                {{ ucwords('%%modelName%%') }} Form
+                {{ ucwords('Incident') }} Form
             </div>
 
         </div><!-- ./card-->

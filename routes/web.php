@@ -15,8 +15,8 @@ Route::get('/', 'DashboardController@index')->name('home');
 
 /* Settings - vendor routes requiring auth protection */
 Route::middleware('auth')->group(function() {
-  Route::get('crud', ['uses' => 'ProcessController@getGenerator'])->name('getCrud');
-  Route::post('crud', ['uses' => 'ProcessController@postGenerator'])->name('postCrud');
+  Route::get('crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@getGenerator'])->name('getCrud');
+  Route::post('crud', ['uses' => '\Fishmad\Checkmate\Controllers\ProcessController@postGenerator'])->name('postCrud');
 });
 
 // /* Settings */
@@ -79,74 +79,5 @@ Route::view('/error500','_errors.500')->name('error500');
 Route::get('samples/datatables', 'SamplesController@datatables');
 Route::resource('samples', 'SamplesController');
 
-Route::resource('page', 'PageController');
-
-Route::get('kid/datatables', 'KidController@datatables');
-Route::resource('kid', 'KidController');
-
-Route::get('owls/datatables', 'OwlsController@datatables');
-Route::resource('owls', 'OwlsController');
-
-Route::get('tree/datatables', 'TreeController@datatables');
-Route::resource('tree', 'TreeController');
-Route::resource('tool', 'ToolController');
-Route::resource('frog', 'FrogController');
-Route::resource('abo', 'AboController');
-Route::resource('bird', 'birdController');
-Route::get('bark/datatables', 'BarkController@datatables');
-Route::resource('bark', 'BarkController');
-Route::get('emu/datatables', 'EmuController@datatables');
-Route::resource('emu', 'EmuController');
-Route::get('zebra/datatables', 'ZebraController@datatables');
-Route::resource('zebra', 'ZebraController');
-Route::get('donkey/datatables', 'DonkeyController@datatables');
-Route::resource('donkey', 'DonkeyController');
-Route::get('donkey/datatables', 'DonkeyController@datatables');
-Route::resource('donkey', 'DonkeyController');
-Route::get('mouse/datatables', 'MouseController@datatables');
-Route::resource('mouse', 'MouseController');
-Route::get('fire/datatables', 'FireController@datatables');
-Route::resource('fire', 'FireController');
-Route::get('river/datatables', 'RiverController@datatables');
-Route::resource('river', 'RiverController');
-Route::get('lee/datatables', 'lee@datatables');
-Route::resource('lee', 'lee');
-
-Route::resource('lake', 'LakeController');
-Route::get('lake/datatables', 'LakeController@datatables');
-Route::resource('lake', 'LakeController');
-
-Route::get('lee/datatables', 'lee@datatables');
-Route::resource('lee', 'lee');
-Route::get('cat/datatables', 'CatController@datatables');
-Route::resource('cat', 'CatController');
-Route::get('cat/datatables', 'CatController@datatables');
-Route::resource('cat', 'CatController');
-Route::get('fire/datatables', 'FireController@datatables');
-Route::resource('fire', 'FireController');
-Route::get('cars/datatables', 'CarsController@datatables');
-Route::resource('cars', 'CarsController');
-Route::get('boots/datatables', 'BootsController@datatables');
-Route::resource('boots', 'BootsController');
-Route::get('elephants/datatables', 'ElephantsController@datatables');
-Route::resource('elephants', 'ElephantsController');
-Route::get('birds/datatables', 'BirdsController@datatables');
-Route::resource('birds', 'BirdsController');
-Route::get('flowers/datatables', 'FlowersController@datatables');
-Route::resource('flowers', 'FlowersController');
-Route::get('pots/datatables', 'PotsController@datatables');
-Route::resource('pots', 'PotsController');
-Route::get('trees/datatables', 'TreesController@datatables');
-Route::resource('trees', 'TreesController');
-Route::get('goats/datatables', 'GoatsController@datatables');
-Route::resource('goats', 'GoatsController');
-Route::get('cows/datatables', 'CowsController@datatables');
-Route::resource('cows', 'CowsController');
-Route::get('chickens/datatables', 'ChickensController@datatables');
-Route::resource('chickens', 'ChickensController');
-Route::get('frogs/datatables', 'FrogsController@datatables');
-Route::resource('frogs', 'FrogsController');
-Route::get('ants/datatables', 'AntsController@datatables');
-Route::resource('ants', 'AntsController');
-Route::get('bicycles/datatables', 'BicyclesController@datatables');
-Route::resource('bicycles', 'BicyclesController');
+Route::get('incidents/datatables', 'IncidentsController@datatables');
+Route::resource('incidents', 'IncidentsController');
