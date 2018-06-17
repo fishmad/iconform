@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d252be2e936e89ff35b57544b847ba2e",
+    "content-hash": "0c5118a852b6a768ee51e5c7746cb562",
     "packages": [
         {
             "name": "appzcoder/crud-generator",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fishmad/crud-generator.git",
-                "reference": "7772006327bc263c72af3dc32b3a377dda8b713f"
+                "reference": "4f2c080462fa4069699259cdab072b1421595b95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fishmad/crud-generator/zipball/7772006327bc263c72af3dc32b3a377dda8b713f",
-                "reference": "7772006327bc263c72af3dc32b3a377dda8b713f",
+                "url": "https://api.github.com/repos/fishmad/crud-generator/zipball/4f2c080462fa4069699259cdab072b1421595b95",
+                "reference": "4f2c080462fa4069699259cdab072b1421595b95",
                 "shasum": ""
             },
             "require": {
@@ -67,7 +67,7 @@
             "support": {
                 "source": "https://github.com/fishmad/crud-generator/tree/fishmad"
             },
-            "time": "2018-06-16T05:39:14+00:00"
+            "time": "2018-06-17T09:34:50+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
@@ -441,58 +441,6 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
-        },
-        {
-            "name": "fishmad/checkmate",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fishmad/checkmate.git",
-                "reference": "e4347783337ed3c8c8ee17eb448473212ab1c51a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fishmad/checkmate/zipball/e4347783337ed3c8c8ee17eb448473212ab1c51a",
-                "reference": "e4347783337ed3c8c8ee17eb448473212ab1c51a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.5.*",
-                "laravelcollective/html": "5.5.*",
-                "orangehill/iseed": "2.5.*",
-                "php": ">=7.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Fishmad\\Checkmate\\CheckmateServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Fishmad\\Checkmate\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "fishmad",
-                    "email": "fishmadwebdesign@gmail.com"
-                }
-            ],
-            "description": "Checkmate Dasboard & Crudmin",
-            "keywords": [
-                "checkmate",
-                "checkmate panel",
-                "laravel",
-                "laravel checkmate"
-            ],
-            "time": "2018-06-17T05:45:45+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1150,65 +1098,6 @@
                 "php"
             ],
             "time": "2018-06-03T11:33:10+00:00"
-        },
-        {
-            "name": "orangehill/iseed",
-            "version": "v2.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/orangehill/iseed.git",
-                "reference": "c99a9f7bcc37dd853891acdc2e4d43bcf55a0404"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/orangehill/iseed/zipball/c99a9f7bcc37dd853891acdc2e4d43bcf55a0404",
-                "reference": "c99a9f7bcc37dd853891acdc2e4d43bcf55a0404",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5.3.8",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/filesystem": "5.x",
-                "laravel/framework": "^5.3.8",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Orangehill\\Iseed\\IseedServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Orangehill\\Iseed": "src/"
-                },
-                "classmap": [
-                    "src/Orangehill/Iseed/Exceptions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tihomir Opacic",
-                    "email": "tihomir.opacic@orangehilldev.com"
-                }
-            ],
-            "description": "Generate a new Laravel database seed file based on data from the existing database table.",
-            "keywords": [
-                "artisan",
-                "generators",
-                "laravel",
-                "seed"
-            ],
-            "time": "2017-10-05T07:30:15+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4588,8 +4477,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "appzcoder/crud-generator": 20,
-        "fishmad/checkmate": 20
+        "appzcoder/crud-generator": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
