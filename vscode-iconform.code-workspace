@@ -1,11 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "vendor\\appzcoder\\crud-generator"
-		}
-	],
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "vendor\\appzcoder\\crud-generator"
+        },
+        {
+            "path": "vendor\\fishmad\\checkmate"
+        }
+    ],
     "settings": {}
 }
