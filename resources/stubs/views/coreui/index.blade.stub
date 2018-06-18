@@ -2,48 +2,46 @@
 
 @section('content')
 
-<div class="container">
-    <div class="animate fadeIn">
+                <div class="container">
+                    <div class="animate fadeIn">
+                        <div class="card">
 
-        <div class="card">
+                            <div class="card-header">
+                                <a href="{{ route('%%crudName%%.create') }}" class="btn btn-outline-primary float-right">Create</a>
+                                <h2><i class="fa fa-align-justify"></i> <strong>{{ str_singular('%%crudNameCap%%') }} </strong> Register 
+                                    <small>
+                                        Create, read, update and delete {{ str_plural('%%crudNameCap%%') }} from this screen.
+                                    </small>
+                                </h2>
+                            </div><!-- ./card-header-->
 
-            <div class="card-header">
-                <a href="{{ route('%%crudName%%.create') }}" class="btn btn-outline-primary float-right">Create</a>
-                <h2><i class="fa fa-align-justify"></i> <strong>{{ str_singular('%%crudNameCap%%') }} </strong> Register 
-                    <small>
-                        Create, read, update and delete {{ str_plural('%%crudNameCap%%') }} from this screen.
-                    </small>
-                </h2>
-            </div><!-- ./card-header-->
+                            <div class="card-body">
 
-            <div class="card-body">
+                                <table id="datatable" data-toggle="dataTable" data-form="deleteForm" class="table table-responsive-sm" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+@foreach ($columns as $tbl_headers => $table_title)
+@if ($table_title === "created_at" || $table_title === "updated_at" || $table_title === "password" || $table_title === "remember_token" )
+@else
+                                            <th>{{ str_replace('_', ' ', title_case(($table_title))) }}</th>
+@endif
+@endforeach
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table><!-- ./datatables-->
 
-                <table id="datatable" data-toggle="dataTable" data-form="deleteForm" class="table table-responsive-sm" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            @foreach ($columns as $tbl_headers => $table_title)
-                            @if ($table_title === "created_at" || $table_title === "updated_at" || $table_title === "password" || $table_title === "remember_token" )
-                            @else
-                            <th>{{ str_replace('_', ' ', title_case(($table_title))) }}</th>
-                            @endif
-                            @endforeach
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                            </div><!-- ./card-body-->
 
-            </div><!-- ./card-body-->
+                            <div class="card-footer">
+                                {{ ucwords('%%modelName%%') }} List
+                            </div>
 
-            <div class="card-footer">
-            {{ ucwords('%%modelName%%') }} List
-            </div>
-
-        </div><!-- ./card-->
-    </div><!-- ./animate fadeIn-->
-
-</div><!-- ./container || container-fluid-->
+                        </div><!-- ./card-->
+                    </div><!-- ./animate fadeIn-->
+                </div><!-- ./container || container-fluid-->
 
 @endsection
 

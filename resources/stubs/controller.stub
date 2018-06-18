@@ -125,11 +125,10 @@ class DummyClass extends Controller
         //     }
         // }
 
-        $this->validate($request, [
-          'name' => 'required'
-        ]);
+        {{validationRules}}
 
         $requestData = $request->all();
+        {{fileSnippet}}
         {{modelName}}::create($requestData);
 
         return redirect('{{routeGroup}}{{viewName}}')->with('success', '{{modelName}} added!');
@@ -197,12 +196,12 @@ class DummyClass extends Controller
         //     }
         // }
 
-        $this->validate($request, [
-          'name' => 'required'
-        ]);
-        
+        {{validationRules}}
+
+        $requestData = $request->all();
+        {{fileSnippet}}
         ${{crudName}} = {{modelName}}::findOrFail($id);
-        ${{crudName}}->update($request->all());
+        ${{crudName}}->update($requestData);
 
         return redirect(route('{{routeGroup}}{{viewName}}.index'))->withSuccess('{{modelName}} was updated!');
     }
