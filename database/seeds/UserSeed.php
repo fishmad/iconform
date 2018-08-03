@@ -13,7 +13,7 @@ class UserSeed extends Seeder
     public function run()
     {
         $superUser = User::create([
-            'name'      => 'Master Crafter',
+            'name'      => 'Mr SU Crafter',
             'email'     => 'superuser@user.com',
             'password'  => 'password'
         ]);
@@ -22,7 +22,7 @@ class UserSeed extends Seeder
 
         $admin = User::create([
             'name'      => 'Admin Smith Jones',
-            'email'     => 'admin@user.com',
+            'email'     => 'admin@email.com',
             'password'  => 'password'
         ]);
         $admin->assignRole('Admin');
@@ -30,7 +30,7 @@ class UserSeed extends Seeder
 
         $executive = User::create([
           'name'      => 'CEO Mr Jones',
-          'email'     => 'ceo@user.com',
+          'email'     => 'ceo@email.com',
           'password'  => 'password'
         ]);
         $executive->assignRole('CEO', 'Manager', 'Admin');
@@ -38,7 +38,7 @@ class UserSeed extends Seeder
 
         $executive = User::create([
           'name'      => 'Exec Smith J',
-          'email'     => 'exec@user.com',
+          'email'     => 'exec@email.com',
           'password'  => 'password'
         ]);
         $executive->assignRole('Executive');
@@ -46,7 +46,7 @@ class UserSeed extends Seeder
 
         $manager = User::create([
           'name'      => 'Mngr Smitherson',
-          'email'     => 'manager@user.com',
+          'email'     => 'manager@email.com',
           'password'  => 'password'
         ]);
         $manager->assignRole('Manager');
@@ -54,7 +54,7 @@ class UserSeed extends Seeder
 
         $supervisor = User::create([
           'name'      => 'Suprv Smit Johns',
-          'email'     => 'supervisor@user.com',
+          'email'     => 'supervisor@email.com',
           'password'  => 'password'
         ]);
         $supervisor->assignRole('Supervisor');
